@@ -7,7 +7,7 @@ function li(a, b, n) {
 }
 
 let servicesImgProps = {
-  width: 14,
+  width: 10,
 };
 
 function isInViewport(element) {
@@ -23,14 +23,15 @@ function isInViewport(element) {
 
 window.addEventListener("scroll", () => {
   if (isInViewport(servicesHomeGrid)) {
-    if (servicesImgProps.width <= 20 && servicesImgProps.width >= 14) {
-      servicesImgProps.width = li(servicesImgProps.width, scrollY / 38, 0.043);
-      servicesImgProps.width = Math.floor(servicesImgProps.width * 100) / 100;
-    }
+    // if (servicesImgProps.width <= 20 && servicesImgProps.width >= 14) {
+    // servicesImgProps.width = li(servicesImgProps.width, scrollY / 38, 0.043);
+    servicesImgProps.width = scrollY / 38;
+    // servicesImgProps.width = Math.floor(servicesImgProps.width * 100) / 100;
+    // }
     servicesHomeImgs.forEach((img) => {
       img.style.width = `${Math.max(
         Math.min(servicesImgProps.width, 20),
-        14
+        10
       )}vw`;
     });
   }
