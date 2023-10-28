@@ -21,7 +21,7 @@ function isInViewport(element) {
   );
 }
 
-window.addEventListener("scroll", () => {
+document.addEventListener("scroll", () => {
   if (isInViewport(servicesHomeGrid)) {
     // if (servicesImgProps.width <= 20 && servicesImgProps.width >= 14) {
     // servicesImgProps.width = li(servicesImgProps.width, scrollY / 38, 0.043);
