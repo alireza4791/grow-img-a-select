@@ -1,6 +1,11 @@
 let servicesHomeGrid = document.querySelector(".Grid");
 let servicesHomeImgs = document.querySelectorAll(".services-img");
 
+//helper functions
+function li(a, b, n) {
+  return (1 - n) * a + n * b;
+}
+
 let servicesImgProps = {
   width: window
     .getComputedStyle(servicesHomeImgs[0], null)
@@ -20,9 +25,10 @@ function isInViewport(element) {
 
 window.addEventListener("scroll", () => {
   if (isInViewport(servicesHomeGrid)) {
-    if (servicesImgProps.width <= 20 && servicesImgProps.width >= 14)
-      servicesImgProps.width += scrollY / 38;
-    
+    if (servicesImgProps.width <= 20 && servicesImgProps.width >= 14) {
+      servicesImgProps.width = li(servicesImgProps.width, scrollY / 38, 0.043);
+      servicesImgProps.width = Math.floor(servicesImgProps.width * 100) / 100;
+    }
     servicesHomeImgs.forEach((img) => {
       img.style.width = `${Math.max(
         Math.min(servicesImgProps.width, 20),
