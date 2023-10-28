@@ -1,4 +1,4 @@
-let servicesHomeGrid = document.querySelector(".grid");
+let servicesHomeGrid = document.querySelector(".services-img-container-flex");
 let servicesHomeImgs = document.querySelectorAll(".services-img");
 
 //helper functions
@@ -7,9 +7,7 @@ function li(a, b, n) {
 }
 
 let servicesImgProps = {
-  width: window
-    .getComputedStyle(servicesHomeImgs[0], null)
-    .getPropertyValue("width"),
+  width: 14,
 };
 
 function isInViewport(element) {
