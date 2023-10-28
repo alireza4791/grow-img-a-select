@@ -1,4 +1,4 @@
-let servicesHomeGrid = document.querySelector(".Grid");
+let servicesHomeGrid = document.querySelector(".grid");
 let servicesHomeImgs = document.querySelectorAll(".services-img");
 
 //helper functions
