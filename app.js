@@ -25,7 +25,7 @@ document.addEventListener("scroll", () => {
   if (isInViewport(servicesHomeGrid)) {
     // if (servicesImgProps.width <= 20 && servicesImgProps.width >= 14) {
     // servicesImgProps.width = li(servicesImgProps.width, scrollY / 38, 0.043);
-    servicesImgProps.width = scrollY / 38;
+    servicesImgProps.width = scrollY / 48;
     // servicesImgProps.width = Math.floor(servicesImgProps.width * 100) / 100;
     // }
     servicesHomeImgs.forEach((img) => {
