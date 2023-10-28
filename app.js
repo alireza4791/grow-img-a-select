@@ -20,9 +20,14 @@ function isInViewport(element) {
 
 window.addEventListener("scroll", () => {
   if (isInViewport(servicesHomeGrid)) {
-    if (servicesImgProps.width <= 20) servicesImgProps.width += scrollY / 38;
+    if (servicesImgProps.width <= 20 && servicesImgProps.width >= 14)
+      servicesImgProps.width += scrollY / 38;
+    
     servicesHomeImgs.forEach((img) => {
-      img.style.width = `${Math.min(servicesImgProps.width, 20)}vw`;
+      img.style.width = `${Math.max(
+        Math.min(servicesImgProps.width, 20),
+        14
+      )}vw`;
     });
   }
 });
