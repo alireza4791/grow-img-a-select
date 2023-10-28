@@ -1,6 +1,12 @@
 let servicesHomeGrid = document.querySelector(".Grid");
 let servicesHomeImgs = document.querySelectorAll(".services-img");
 
+let servicesImgProps = {
+  width: window
+    .getComputedStyle(servicesHomeImgs[0], null)
+    .getPropertyValue("width"),
+};
+
 function isInViewport(element) {
   const rect = element.getBoundingClientRect();
   return (
@@ -14,9 +20,9 @@ function isInViewport(element) {
 
 window.addEventListener("scroll", () => {
   if (isInViewport(servicesHomeGrid)) {
+    if (servicesImgProps.width <= 20) servicesImgProps.width += scrollY / 38;
     servicesHomeImgs.forEach((img) => {
-      img.style.width = "20vw";
-      img.style.width = "28vw";
+      img.style.width = `${Math.min(servicesImgProps.width, 20)}vw`;
     });
   }
 });
