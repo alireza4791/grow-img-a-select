@@ -41,7 +41,7 @@ document.addEventListener("scroll", () => {
         if (scrollYDiff === 0) {
           scrollYDiff = scrollY;
         } else {
-          servicesImgProps.width = (scrollY - scrollYDiff) / 48;
+          servicesImgProps.width = (scrollY - scrollYDiff) / 6;
           servicesHomeImgs.forEach((img) => {
             img.style.width = `${Math.max(
               Math.min(servicesImgProps.width, 20),
@@ -51,11 +51,5 @@ document.addEventListener("scroll", () => {
         }
       }
     }
-
-    // if (servicesImgProps.width <= 20 && servicesImgProps.width >= 14) {
-    // servicesImgProps.width = li(servicesImgProps.width, scrollY / 38, 0.043);
-
-    // servicesImgProps.width = Math.floor(servicesImgProps.width * 100) / 100;
-    // }
   }
 });
