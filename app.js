@@ -1,5 +1,5 @@
 let servicesHomeGrid = document.querySelector(".bordered");
-let serviesHomeBox = document.querySelector(".div-block-3");
+let serviesHomeBox = document.querySelector(".div-block-4");
 let servicesHomeImgs = document.querySelectorAll(".services-img");
 
 //helper functions
