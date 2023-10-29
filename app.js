@@ -30,20 +30,25 @@ servicesHomeImgs.forEach((img) => {
 });
 
 let middleImgTransform = 7;
+let scrollYDiff = 0;
 document.addEventListener("scroll", () => {
   if (isInViewport(servicesHomeGrid) || isInViewport(serviesHomeBox)) {
     if (middleImg) {
       middleImgTransform = Math.max(7 - scrollY / 145, 0);
       servicesHomeImgs[1].style.transform = `translate(0, -${middleImgTransform}vh)`;
-    }
-    if (middleImgTransform === 0) {
-      servicesImgProps.width = scrollY / 48;
-      servicesHomeImgs.forEach((img) => {
-        img.style.width = `${Math.max(
-          Math.min(servicesImgProps.width, 20),
-          10
-        )}vw`;
-      });
+
+      if (middleImgTransform === 0) {
+        if (scrollYDiff === 0) {
+          scrollYDiff = scrollY;
+        }
+        servicesImgProps.width = (scrollY - scrollYDiff) / 48;
+        servicesHomeImgs.forEach((img) => {
+          img.style.width = `${Math.max(
+            Math.min(servicesImgProps.width, 20),
+            10
+          )}vw`;
+        });
+      }
     }
 
     // if (servicesImgProps.width <= 20 && servicesImgProps.width >= 14) {
