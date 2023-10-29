@@ -33,7 +33,7 @@ let middleImgTransform = 7;
 document.addEventListener("scroll", () => {
   if (isInViewport(servicesHomeGrid) || isInViewport(serviesHomeBox)) {
     if (middleImg) {
-      middleImgTransform = Math.max(7 - scrollY / 50, 0);
+      middleImgTransform = Math.max(7 - scrollY / 145, 0);
       servicesHomeImgs[1].style.transform = `-${middleImgTransform}vh`;
     }
     if (middleImgTransform === 0) {
