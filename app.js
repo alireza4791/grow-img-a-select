@@ -1,4 +1,5 @@
-let servicesHomeGrid = document.querySelector(".services-img-container-flex");
+let servicesHomeGrid = document.querySelector(".bordered");
+let serviesHomeBox = document.querySelector(".div-block-3");
 let servicesHomeImgs = document.querySelectorAll(".services-img");
 
 //helper functions
@@ -22,7 +23,7 @@ function isInViewport(element) {
 }
 
 document.addEventListener("scroll", () => {
-  if (isInViewport(servicesHomeGrid)) {
+  if (isInViewport(servicesHomeGrid) || isInViewport(serviesHomeBox)) {
     // if (servicesImgProps.width <= 20 && servicesImgProps.width >= 14) {
     // servicesImgProps.width = li(servicesImgProps.width, scrollY / 38, 0.043);
     servicesImgProps.width = scrollY / 48;
