@@ -34,7 +34,7 @@ document.addEventListener("scroll", () => {
   if (isInViewport(servicesHomeGrid) || isInViewport(serviesHomeBox)) {
     if (middleImg) {
       middleImgTransform = Math.max(7 - scrollY / 145, 0);
-      servicesHomeImgs[1].style.transform = `-${middleImgTransform}vh`;
+      servicesHomeImgs[1].style.transform = `translate(0, -${middleImgTransform}vh)`;
     }
     if (middleImgTransform === 0) {
       servicesImgProps.width = scrollY / 48;
