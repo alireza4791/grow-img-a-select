@@ -22,18 +22,34 @@ function isInViewport(element) {
   );
 }
 
+let middleImg;
+servicesHomeImgs.forEach((img) => {
+  if (img.classList.contains("middle")) {
+    middleImg = img;
+  }
+});
+
+let middleImgTransform = 7;
 document.addEventListener("scroll", () => {
   if (isInViewport(servicesHomeGrid) || isInViewport(serviesHomeBox)) {
+    if (middleImg) {
+      middleImgTransform = Math.max(7 - scrollY / 50, 0);
+      servicesHomeImgs[1].style.transform = `-${middleImgTransform}vh`;
+    }
+    if (middleImgTransform === 0) {
+      servicesImgProps.width = scrollY / 48;
+      servicesHomeImgs.forEach((img) => {
+        img.style.width = `${Math.max(
+          Math.min(servicesImgProps.width, 20),
+          10
+        )}vw`;
+      });
+    }
+
     // if (servicesImgProps.width <= 20 && servicesImgProps.width >= 14) {
     // servicesImgProps.width = li(servicesImgProps.width, scrollY / 38, 0.043);
-    servicesImgProps.width = scrollY / 48;
+
     // servicesImgProps.width = Math.floor(servicesImgProps.width * 100) / 100;
     // }
-    servicesHomeImgs.forEach((img) => {
-      img.style.width = `${Math.max(
-        Math.min(servicesImgProps.width, 20),
-        10
-      )}vw`;
-    });
   }
 });
