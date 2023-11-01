@@ -80,6 +80,9 @@ servicesHomeImgs.forEach((img) => {
           images.style.width = "10%";
           images.querySelector(".service-header").style.fontSize = "30px";
           images.querySelector(".service-content").style.opacity = "0";
+          images.querySelector(".service-header").style.transform =
+            "translate(0px)rotate(-90deg)";
+          images.querySelector(".service-header").style.opacity = "1";
         } else {
           images.style.width = "60%";
           images.querySelector(".service-header").style.transform =
