@@ -1,6 +1,9 @@
 let servicesHomeGrid = document.querySelector(".bordered");
 let serviesHomeBox = document.querySelector(".div-block-4");
 let servicesHomeImgs = document.querySelectorAll(".services-img");
+let servicesHomeContainer = document.querySelector(
+  ".services-img-container-flex"
+);
 
 //helper functions
 function li(a, b, n) {
@@ -68,6 +71,7 @@ servicesHomeImgs.forEach((img) => {
       servicesHomeImgs.forEach((images) => {
         if (images != img) {
           images.style.width = "10%";
+          images.querySelector(".service-header").style.fontSize = "30px";
         } else {
           images.style.width = "60%";
           images.querySelector(".service-header").style.transform =
@@ -77,5 +81,15 @@ servicesHomeImgs.forEach((img) => {
         }
       });
     }
+  });
+});
+
+servicesHomeContainer.addEventListener("mouseleave", () => {
+  servicesHomeImgs.forEach((img) => {
+    img.style.width = `30%`;
+    img.querySelector(".service-header").style.opacity = "1";
+    img.querySelector(".service-header").style.transform =
+      "translate(0px)rotate(-90deg)";
+    img.querySelector(".service-content").style.opacity = "0";
   });
 });
