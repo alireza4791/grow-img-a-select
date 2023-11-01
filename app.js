@@ -70,6 +70,10 @@ servicesHomeImgs.forEach((img) => {
           images.style.width = "10%";
         } else {
           images.style.width = "60%";
+          images.querySelector(".service-header").style.transform =
+            "translate(80px)rotate(-90deg)";
+          images.querySelector(".service-header").style.opacity = "0";
+          images.querySelector(".service-content").style.opacity = "1";
         }
       });
     }
