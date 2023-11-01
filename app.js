@@ -48,6 +48,15 @@ document.addEventListener("scroll", () => {
               10
             )}vw`;
           });
+
+          if (Math.max(Math.min(servicesImgProps.width, 20), 10) === 20) {
+            //animation finished
+            servicesHomeImgs.forEach((img) => {
+              if (!img.classList.contains("finished")) {
+                img.classList.add("finished");
+              }
+            });
+          }
         }
       }
     }
