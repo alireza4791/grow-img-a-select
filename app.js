@@ -34,6 +34,10 @@ servicesHomeImgs.forEach((img) => {
 
 let middleImgTransform = 7;
 let scrollYDiff = 0;
+let baseFontSize = window
+  .getComputedStyle(outer1, null)
+  .getPropertyValue("font-size");
+
 document.addEventListener("scroll", () => {
   if (isInViewport(servicesHomeGrid) || isInViewport(serviesHomeBox)) {
     if (middleImg) {
@@ -91,5 +95,6 @@ servicesHomeContainer.addEventListener("mouseleave", () => {
     img.querySelector(".service-header").style.transform =
       "translate(0px)rotate(-90deg)";
     img.querySelector(".service-content").style.opacity = "0";
+    img.querySelector(".service-header").style.fontSize = `${baseFontSize}px`;
   });
 });
