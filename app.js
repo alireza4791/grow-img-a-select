@@ -35,7 +35,10 @@ servicesHomeImgs.forEach((img) => {
 let middleImgTransform = 7;
 let scrollYDiff = 0;
 let baseFontSize = window
-  .getComputedStyle(outer1, null)
+  .getComputedStyle(
+    document.querySelector(".services-img .service-header"),
+    null
+  )
   .getPropertyValue("font-size");
 
 document.addEventListener("scroll", () => {
