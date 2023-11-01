@@ -79,6 +79,7 @@ servicesHomeImgs.forEach((img) => {
         if (images != img) {
           images.style.width = "10%";
           images.querySelector(".service-header").style.fontSize = "30px";
+          images.querySelector(".service-content").style.opacity = "0";
         } else {
           images.style.width = "60%";
           images.querySelector(".service-header").style.transform =
