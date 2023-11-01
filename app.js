@@ -69,7 +69,7 @@ servicesHomeImgs.forEach((img) => {
         if (images != img) {
           images.style.width = "10%";
         } else {
-          images.style.width = "46%";
+          images.style.width = "60%";
         }
       });
     }
