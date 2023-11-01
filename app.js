@@ -98,6 +98,6 @@ servicesHomeContainer.addEventListener("mouseleave", () => {
     img.querySelector(".service-header").style.transform =
       "translate(0px)rotate(-90deg)";
     img.querySelector(".service-content").style.opacity = "0";
-    img.querySelector(".service-header").style.fontSize = `${baseFontSize}px`;
+    img.querySelector(".service-header").style.fontSize = baseFontSize;
   });
 });
