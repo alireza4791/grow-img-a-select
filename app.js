@@ -46,7 +46,7 @@ document.addEventListener("scroll", () => {
             img.style.width = `${Math.max(
               Math.min(servicesImgProps.width, 20),
               10
-            )}vw`;
+            )}%`;
           });
 
           if (Math.max(Math.min(servicesImgProps.width, 20), 10) === 20) {
@@ -67,9 +67,9 @@ servicesHomeImgs.forEach((img) => {
     if (Math.max(Math.min(servicesImgProps.width, 20), 10) === 20) {
       servicesHomeImgs.forEach((images) => {
         if (images != img) {
-          images.style.width = "10vw";
+          images.style.width = "10%";
         } else {
-          images.style.width = "40vw";
+          images.style.width = "40%";
         }
       });
     }
