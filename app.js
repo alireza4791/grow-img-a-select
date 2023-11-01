@@ -44,12 +44,12 @@ document.addEventListener("scroll", () => {
           servicesImgProps.width = (scrollY - scrollYDiff) / 18;
           servicesHomeImgs.forEach((img) => {
             img.style.width = `${Math.max(
-              Math.min(servicesImgProps.width, 25),
+              Math.min(servicesImgProps.width, 30),
               10
             )}%`;
           });
 
-          if (Math.max(Math.min(servicesImgProps.width, 25), 10) === 25) {
+          if (Math.max(Math.min(servicesImgProps.width, 30), 10) === 30) {
             servicesHomeImgs.forEach((img) => {
               if (!img.classList.contains("finished")) {
                 img.classList.add("finished");
@@ -64,7 +64,7 @@ document.addEventListener("scroll", () => {
 
 servicesHomeImgs.forEach((img) => {
   img.addEventListener("mousemove", () => {
-    if (Math.max(Math.min(servicesImgProps.width, 25), 10) === 25) {
+    if (Math.max(Math.min(servicesImgProps.width, 30), 10) === 30) {
       servicesHomeImgs.forEach((images) => {
         if (images != img) {
           images.style.width = "10%";
