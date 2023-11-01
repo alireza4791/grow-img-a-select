@@ -41,7 +41,7 @@ document.addEventListener("scroll", () => {
         if (scrollYDiff === 0) {
           scrollYDiff = scrollY;
         } else {
-          servicesImgProps.width = (scrollY - scrollYDiff) / 18;
+          servicesImgProps.width = (scrollY - scrollYDiff) / 10;
           servicesHomeImgs.forEach((img) => {
             img.style.width = `${Math.max(
               Math.min(servicesImgProps.width, 30),
