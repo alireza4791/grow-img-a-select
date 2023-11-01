@@ -34,14 +34,14 @@ let scrollYDiff = 0;
 document.addEventListener("scroll", () => {
   if (isInViewport(servicesHomeGrid) || isInViewport(serviesHomeBox)) {
     if (middleImg) {
-      middleImgTransform = Math.max(7 - scrollY / 100, 0);
+      middleImgTransform = Math.max(7 - scrollY / 80, 0);
       servicesHomeImgs[1].style.transform = `translate(0, -${middleImgTransform}vh)`;
 
       if (middleImgTransform === 0) {
         if (scrollYDiff === 0) {
           scrollYDiff = scrollY;
         } else {
-          servicesImgProps.width = (scrollY - scrollYDiff) / 13;
+          servicesImgProps.width = (scrollY - scrollYDiff) / 23;
           servicesHomeImgs.forEach((img) => {
             img.style.width = `${Math.max(
               Math.min(servicesImgProps.width, 20),
