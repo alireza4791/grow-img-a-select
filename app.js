@@ -48,17 +48,22 @@ document.addEventListener("scroll", () => {
               10
             )}vw`;
           });
-
-          if (Math.max(Math.min(servicesImgProps.width, 20), 10) === 20) {
-            //animation finished
-            // servicesHomeImgs.forEach((img) => {
-            //   if (!img.classList.contains("finished")) {
-            //     img.classList.add("finished");
-            //   }
-            // });
-          }
         }
       }
     }
   }
+});
+
+servicesHomeImgs.forEach((img) => {
+  img.addEventListener("mousemove", () => {
+    if (Math.max(Math.min(servicesImgProps.width, 20), 10) === 20) {
+      servicesHomeImgs.forEach((images) => {
+        if (images != img) {
+          img.style.width = "10vw";
+        } else {
+          img.style.width = "40vw";
+        }
+      });
+    }
+  });
 });
