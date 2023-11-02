@@ -105,6 +105,6 @@ servicesHomeContainer.addEventListener("mouseleave", () => {
       "translate(0px)rotate(-90deg)";
     img.querySelector(".service-content").style.opacity = "0";
     img.querySelector(".service-header").style.fontSize = baseFontSize;
-    images.querySelector(".service-header").style.height = "90%";
+    img.querySelector(".service-header").style.height = "90%";
   });
 });
