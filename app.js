@@ -44,8 +44,9 @@ let baseFontSize = window
 document.addEventListener("scroll", () => {
   if (isVisible(servicesHomeGrid)) {
     if (middleImg) {
-      middleImgTransform = Math.max(7 - scrollY / 95, 0);
-      servicesHomeImgs[1].style.transform = `translate(0, -${middleImgTransform}vh)`;
+      middleImgTransform = Math.max(scrollY / 95, 7);
+      servicesHomeImgs[0].style.transform = `translate(0, ${middleImgTransform}vh)`;
+      servicesHomeImgs[0].style.transform = `translate(0, ${middleImgTransform}vh)`;
 
       if (scrollY < prevScroll) {
         servicesHomeImgs.forEach((images) => {
