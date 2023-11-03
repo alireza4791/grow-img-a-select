@@ -15,7 +15,7 @@ let servicesImgProps = {
   width: 15,
 };
 
-function isVisible (ele) {
+function isVisible(ele) {
   const { top, bottom } = ele.getBoundingClientRect();
   const vHeight = (window.innerHeight || document.documentElement.clientHeight);
 
@@ -64,10 +64,12 @@ document.addEventListener("scroll", () => {
           servicesImgProps.width = (scrollY - scrollYDiff) / 10;
           servicesHomeImgs.forEach((img) => {
             img.querySelector(".service-header").style.transitionDelay = '0.5s';
-            img.style.width = `${Math.max(
-              Math.min(servicesImgProps.width, 28),
-              15
-            )}%`;
+            if (!img.classList.contains("finished")) {
+              img.style.width = `${Math.max(
+                Math.min(servicesImgProps.width, 28),
+                15
+              )}%`;
+            }
           });
 
           if (Math.max(Math.min(servicesImgProps.width, 28), 15) === 28) {
