@@ -5,6 +5,7 @@ let servicesHomeContainer = document.querySelector(
   ".services-img-container-flex"
 );
 
+let prevScroll = 0;
 //helper functions
 function li(a, b, n) {
   return (1 - n) * a + n * b;
@@ -47,6 +48,14 @@ document.addEventListener("scroll", () => {
       middleImgTransform = Math.max(7 - scrollY / 80, 0);
       servicesHomeImgs[1].style.transform = `translate(0, -${middleImgTransform}vh)`;
 
+      if (scrollY < prevScroll) {
+        servicesHomeImgs.forEach((images) => {
+          images.querySelector(".service-header").style.transform =
+            "translate(0px, 50%)rotate(-90deg)";
+          images.querySelector(".service-header").style.opacity = "1";
+        })
+      }
+
       if (middleImgTransform === 0) {
         if (scrollYDiff === 0) {
           scrollYDiff = scrollY;
@@ -70,6 +79,7 @@ document.addEventListener("scroll", () => {
       }
     }
   }
+  prevScroll = scrollY
 });
 
 servicesHomeImgs.forEach((img) => {
