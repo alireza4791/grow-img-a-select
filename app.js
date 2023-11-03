@@ -12,7 +12,7 @@ function li(a, b, n) {
 }
 
 let servicesImgProps = {
-  width: 10,
+  width: 15,
 };
 
 function isInViewport(element) {
@@ -60,15 +60,15 @@ document.addEventListener("scroll", () => {
         if (scrollYDiff === 0) {
           scrollYDiff = scrollY;
         } else {
-          servicesImgProps.width = (scrollY - scrollYDiff) / 10;
+          servicesImgProps.width = (scrollY - scrollYDiff) / 15;
           servicesHomeImgs.forEach((img) => {
             img.style.width = `${Math.max(
               Math.min(servicesImgProps.width, 30),
-              10
+              15
             )}%`;
           });
 
-          if (Math.max(Math.min(servicesImgProps.width, 30), 10) === 30) {
+          if (Math.max(Math.min(servicesImgProps.width, 30), 15) === 30) {
             servicesHomeImgs.forEach((img) => {
               if (!img.classList.contains("finished")) {
                 img.classList.add("finished");
@@ -84,10 +84,10 @@ document.addEventListener("scroll", () => {
 
 servicesHomeImgs.forEach((img) => {
   img.addEventListener("mousemove", () => {
-    if (Math.max(Math.min(servicesImgProps.width, 30), 10) === 30) {
+    if (Math.max(Math.min(servicesImgProps.width, 30), 15) === 30) {
       servicesHomeImgs.forEach((images) => {
         if (images != img) {
-          images.style.width = "10%";
+          images.style.width = "15%";
           images.querySelector(".service-header").style.fontSize = "30px";
           // images.querySelector(".service-header").style.height = "40%";
           images.querySelector(".service-content").style.opacity = "0";
