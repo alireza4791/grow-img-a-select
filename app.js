@@ -75,6 +75,9 @@ document.addEventListener("scroll", () => {
             servicesHomeImgs.forEach((img) => {
               if (!img.classList.contains("finished")) {
                 img.classList.add("finished");
+                img.querySelector(".service-header").style.transform =
+                  "translate(0px, 50%)rotate(-90deg)";
+                img.querySelector(".service-header").style.opacity = "1";
               }
             });
           } else {
