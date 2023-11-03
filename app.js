@@ -82,13 +82,13 @@ servicesHomeImgs.forEach((img) => {
           // images.querySelector(".service-header").style.height = "40%";
           images.querySelector(".service-content").style.opacity = "0";
           images.querySelector(".service-header").style.transform =
-            "translate(0px)rotate(-90deg)";
+            "translate(0px, 50%)rotate(-90deg)";
           images.querySelector(".service-header").style.opacity = "1";
           // images.querySelector(".service-header-container").style.right = "45%";
         } else {
           images.style.width = "60%";
           images.querySelector(".service-header").style.transform =
-            "translate(80px)rotate(-90deg)";
+            "translate(80px, 50%)rotate(-90deg)";
           images.querySelector(".service-header").style.opacity = "0";
           images.querySelector(".service-content").style.opacity = "1";
           // images.querySelector(".service-header-container").style.right = "20%";
@@ -104,7 +104,7 @@ servicesHomeContainer.addEventListener("mouseleave", () => {
     img.style.width = `30%`;
     img.querySelector(".service-header").style.opacity = "1";
     img.querySelector(".service-header").style.transform =
-      "translate(0px)rotate(-90deg)";
+      "translate(0px, 50%)rotate(-90deg)";
     img.querySelector(".service-content").style.opacity = "0";
     img.querySelector(".service-header").style.fontSize = baseFontSize;
     // img.querySelector(".service-header-container").style.right = "20%";
