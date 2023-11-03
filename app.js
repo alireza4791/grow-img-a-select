@@ -52,8 +52,8 @@ document.addEventListener("scroll", () => {
         console.log('test')
         servicesHomeImgs.forEach((images) => {
           images.querySelector(".service-header").style.transform =
-            "translate(0px, 50%)rotate(-90deg)";
-          images.querySelector(".service-header").style.opacity = "1";
+            "translate(80px, 50%)rotate(-90deg)";
+          images.querySelector(".service-header").style.opacity = "0";
         })
       }
 
