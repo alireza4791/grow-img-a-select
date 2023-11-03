@@ -58,7 +58,7 @@ document.addEventListener("scroll", () => {
         })
       }
 
-      if (middleImgTransform === 0) {
+      if (middleImgTransform === 7) {
         if (scrollYDiff === 0) {
           scrollYDiff = scrollY;
         } else {
