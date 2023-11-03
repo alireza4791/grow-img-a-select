@@ -63,6 +63,7 @@ document.addEventListener("scroll", () => {
         } else {
           servicesImgProps.width = (scrollY - scrollYDiff) / 12;
           servicesHomeImgs.forEach((img) => {
+            img.querySelector(".service-header").style.transitionDelay = '0.5s';
             img.style.width = `${Math.max(
               Math.min(servicesImgProps.width, 30),
               15
