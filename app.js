@@ -66,12 +66,12 @@ document.addEventListener("scroll", () => {
           servicesHomeImgs.forEach((img) => {
             img.querySelector(".service-header").style.transitionDelay = '0.5s';
             img.style.width = `${Math.max(
-              Math.min(servicesImgProps.width, 30),
+              Math.min(servicesImgProps.width, 28),
               15
             )}%`;
           });
 
-          if (Math.max(Math.min(servicesImgProps.width, 30), 15) === 30) {
+          if (Math.max(Math.min(servicesImgProps.width, 28), 15) === 28) {
             servicesHomeImgs.forEach((img) => {
               if (!img.classList.contains("finished")) {
                 img.classList.add("finished");
@@ -127,7 +127,7 @@ servicesHomeContainer.addEventListener("mouseleave", () => {
   servicesHomeImgs.forEach((img) => {
     if (img.classList.contains("finished")) {
       img.querySelector(".service-header").style.transitionDelay = '0s';
-      img.style.width = `30%`;
+      img.style.width = `28%`;
       img.querySelector(".service-header").style.opacity = "1";
       img.querySelector(".service-header").style.transform =
         "translate(0px, 50%)rotate(-90deg)";
