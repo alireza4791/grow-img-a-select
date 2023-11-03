@@ -20,7 +20,7 @@ function isInViewport(element) {
     rect.top >= 0 &&
     rect.left >= 0 &&
     rect.bottom <=
-      (window.innerHeight || document.documentElement.clientHeight) &&
+    (window.innerHeight || document.documentElement.clientHeight) &&
     rect.right <= (window.innerWidth || document.documentElement.clientWidth)
   );
 }
@@ -107,7 +107,7 @@ servicesHomeContainer.addEventListener("mouseleave", () => {
       "translate(0px)rotate(-90deg)";
     img.querySelector(".service-content").style.opacity = "0";
     img.querySelector(".service-header").style.fontSize = baseFontSize;
-    images.querySelector(".service-header-container").style.right = "20%";
+    img.querySelector(".service-header-container").style.right = "20%";
     // img.querySelector(".service-header").style.height = "90%";
   });
 });
