@@ -61,7 +61,7 @@ document.addEventListener("scroll", () => {
         if (scrollYDiff === 0) {
           scrollYDiff = scrollY;
         } else {
-          servicesImgProps.width = (scrollY - scrollYDiff) / 11;
+          servicesImgProps.width = (scrollY - scrollYDiff) / 10;
           servicesHomeImgs.forEach((img) => {
             img.querySelector(".service-header").style.transitionDelay = '0.5s';
             img.style.width = `${Math.max(
@@ -99,7 +99,7 @@ servicesHomeImgs.forEach((img) => {
       servicesHomeImgs.forEach((images) => {
         images.querySelector(".service-header").style.transitionDelay = '0s';
         if (images != img) {
-          images.style.width = "15%";
+          images.style.width = "12%";
           images.querySelector(".service-header").style.fontSize = "30px";
           // images.querySelector(".service-header").style.height = "40%";
           images.querySelector(".service-content").style.opacity = "0";
