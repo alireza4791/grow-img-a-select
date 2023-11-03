@@ -51,9 +51,11 @@ document.addEventListener("scroll", () => {
       if (scrollY < prevScroll) {
         console.log('test')
         servicesHomeImgs.forEach((images) => {
-          images.querySelector(".service-header").style.transform =
-            "translate(80px, 50%)rotate(-90deg)";
-          images.querySelector(".service-header").style.opacity = "0";
+          if (!images.classList.contains('finished')) {
+            images.querySelector(".service-header").style.transform =
+              "translate(80px, 50%)rotate(-90deg)";
+            images.querySelector(".service-header").style.opacity = "0";
+          }
         })
       }
 
@@ -61,7 +63,7 @@ document.addEventListener("scroll", () => {
         if (scrollYDiff === 0) {
           scrollYDiff = scrollY;
         } else {
-          servicesImgProps.width = (scrollY - scrollYDiff) / 12;
+          servicesImgProps.width = (scrollY - scrollYDiff) / 11;
           servicesHomeImgs.forEach((img) => {
             img.querySelector(".service-header").style.transitionDelay = '0.5s';
             img.style.width = `${Math.max(
@@ -76,6 +78,12 @@ document.addEventListener("scroll", () => {
                 img.classList.add("finished");
               }
             });
+          } else {
+            servicesHomeImgs.forEach((img) => {
+              if (img.classList.contains("finished")) {
+                img.classList.remove("finished");
+              }
+            });
           }
         }
       }
@@ -86,7 +94,7 @@ document.addEventListener("scroll", () => {
 
 servicesHomeImgs.forEach((img) => {
   img.addEventListener("mousemove", () => {
-    if (Math.max(Math.min(servicesImgProps.width, 30), 15) === 30) {
+    if (img.classList.contains("finished")) {
       servicesHomeImgs.forEach((images) => {
         images.querySelector(".service-header").style.transitionDelay = '0s';
         if (images != img) {
@@ -113,15 +121,17 @@ servicesHomeImgs.forEach((img) => {
 });
 
 servicesHomeContainer.addEventListener("mouseleave", () => {
-  servicesHomeImgs.forEach((img) => {
-    img.querySelector(".service-header").style.transitionDelay = '0s';
-    img.style.width = `30%`;
-    img.querySelector(".service-header").style.opacity = "1";
-    img.querySelector(".service-header").style.transform =
-      "translate(0px, 50%)rotate(-90deg)";
-    img.querySelector(".service-content").style.opacity = "0";
-    img.querySelector(".service-header").style.fontSize = baseFontSize;
-    // img.querySelector(".service-header-container").style.right = "20%";
-    // img.querySelector(".service-header").style.height = "90%";
-  });
+  if (img.classList.contains("finished")) {
+    servicesHomeImgs.forEach((img) => {
+      img.querySelector(".service-header").style.transitionDelay = '0s';
+      img.style.width = `30%`;
+      img.querySelector(".service-header").style.opacity = "1";
+      img.querySelector(".service-header").style.transform =
+        "translate(0px, 50%)rotate(-90deg)";
+      img.querySelector(".service-content").style.opacity = "0";
+      img.querySelector(".service-header").style.fontSize = baseFontSize;
+      // img.querySelector(".service-header-container").style.right = "20%";
+      // img.querySelector(".service-header").style.height = "90%";
+    });
+  }
 });
