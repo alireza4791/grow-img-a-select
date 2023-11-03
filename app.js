@@ -61,7 +61,7 @@ document.addEventListener("scroll", () => {
         if (scrollYDiff === 0) {
           scrollYDiff = scrollY;
         } else {
-          servicesImgProps.width = (scrollY - scrollYDiff) / 15;
+          servicesImgProps.width = (scrollY - scrollYDiff) / 12;
           servicesHomeImgs.forEach((img) => {
             img.style.width = `${Math.max(
               Math.min(servicesImgProps.width, 30),
@@ -87,7 +87,7 @@ servicesHomeImgs.forEach((img) => {
   img.addEventListener("mousemove", () => {
     if (Math.max(Math.min(servicesImgProps.width, 30), 15) === 30) {
       servicesHomeImgs.forEach((images) => {
-        images.querySelector(".service-header").style.tansitionDelay = '0s';
+        images.querySelector(".service-header").style.transitionDelay = '0s';
         if (images != img) {
           images.style.width = "15%";
           images.querySelector(".service-header").style.fontSize = "30px";
@@ -113,7 +113,7 @@ servicesHomeImgs.forEach((img) => {
 
 servicesHomeContainer.addEventListener("mouseleave", () => {
   servicesHomeImgs.forEach((img) => {
-    img.querySelector(".service-header").style.tansitionDelay = '0s';
+    img.querySelector(".service-header").style.transitionDelay = '0s';
     img.style.width = `30%`;
     img.querySelector(".service-header").style.opacity = "1";
     img.querySelector(".service-header").style.transform =
