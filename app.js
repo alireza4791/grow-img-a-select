@@ -49,6 +49,7 @@ document.addEventListener("scroll", () => {
       servicesHomeImgs[1].style.transform = `translate(0, -${middleImgTransform}vh)`;
 
       if (scrollY < prevScroll) {
+        console.log('test')
         servicesHomeImgs.forEach((images) => {
           images.querySelector(".service-header").style.transform =
             "translate(0px, 50%)rotate(-90deg)";
