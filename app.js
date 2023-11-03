@@ -46,7 +46,7 @@ document.addEventListener("scroll", () => {
     if (middleImg) {
       middleImgTransform = Math.max(scrollY / 95, 7);
       servicesHomeImgs[0].style.transform = `translate(0, -${middleImgTransform}vh)`;
-      servicesHomeImgs[1].style.transform = `translate(0, -${middleImgTransform}vh)`;
+      servicesHomeImgs[2].style.transform = `translate(0, -${middleImgTransform}vh)`;
 
       if (scrollY < prevScroll) {
         servicesHomeImgs.forEach((images) => {
