@@ -42,7 +42,7 @@ let baseFontSize = window
   .getPropertyValue("font-size");
 
 document.addEventListener("scroll", () => {
-  if (isInViewport(servicesHomeGrid) || isInViewport(serviesHomeBox) || isInViewport(document.querySelector('.section-3'))) {
+  if (isVisible(servicesHomeGrid) || isVisible(serviesHomeBox)) {
     if (middleImg) {
       middleImgTransform = Math.max(7 - scrollY / 80, 0);
       servicesHomeImgs[1].style.transform = `translate(0, -${middleImgTransform}vh)`;
