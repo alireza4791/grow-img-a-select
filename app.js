@@ -191,6 +191,7 @@ servicesHomeContainer.addEventListener("touchleave", () => {
 
 
 let modalBg = document.querySelector(".dark-modal-bg");
+let modaBlackBox = document.querySelector(".black-modal-bg");
 let modalContainer = document.querySelector(".menu-modal-container");
 let menuTxt = document.querySelector(".menu-text");
 let modalCloseBtn = document.querySelector(".modal-close");
@@ -259,7 +260,7 @@ if (window.innerWidth <= 768) {
     modalCloseBtn.addEventListener("touchend", () => {
         modalStateHandler("close", true);
     });
-    modalBg.addEventListener("touchend", () => {
+    modaBlackBox.addEventListener("touchend", () => {
         modalStateHandler("close", true);
     });
 } else {
@@ -269,7 +270,7 @@ if (window.innerWidth <= 768) {
     modalCloseBtn.addEventListener("click", () => {
         modalStateHandler("close", false);
     });
-    modalBg.addEventListener("click", () => {
+    modaBlackBox.addEventListener("click", () => {
         modalStateHandler("close", false);
     });
 }
