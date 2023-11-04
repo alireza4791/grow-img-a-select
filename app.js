@@ -54,6 +54,7 @@ document.addEventListener("scroll", () => {
             images.querySelector(".service-header").style.transform =
               "translate(80px, 50%)rotate(-90deg)";
             images.querySelector(".service-header").style.opacity = "0";
+            images.querySelector(".service-content").style.opacity = "0";
           }
         })
       }
