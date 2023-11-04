@@ -122,9 +122,54 @@ servicesHomeImgs.forEach((img) => {
       });
     }
   });
+
+  img.addEventListener("touchmove", () => {
+    if (img.classList.contains("finished")) {
+      servicesHomeImgs.forEach((images) => {
+        images.querySelector(".service-header").style.transitionDelay = '0s';
+        if (images != img) {
+          images.style.width = "12%";
+          images.querySelector(".service-header").style.fontSize = "30px";
+          // images.querySelector(".service-header").style.height = "40%";
+          images.querySelector(".service-content").style.opacity = "0";
+          images.querySelector(".service-header").style.transform =
+            "translate(0px, 50%)rotate(-90deg)";
+          images.querySelector(".service-header").style.opacity = "1";
+          // images.querySelector(".service-header-container").style.right = "45%";
+        } else {
+          images.style.width = "60%";
+          images.querySelector(".service-header").style.transform =
+            "translate(80px, 50%)rotate(-90deg)";
+          images.querySelector(".service-header").style.opacity = "0";
+          images.querySelector(".service-content").style.opacity = "1";
+          // images.querySelector(".service-header-container").style.right = "20%";
+          // images.querySelector(".service-header").style.height = "90%";
+        }
+      });
+    }
+  });
 });
 
 servicesHomeContainer.addEventListener("mouseleave", () => {
+
+  servicesHomeImgs.forEach((img) => {
+    if (img.classList.contains("finished")) {
+      img.querySelector(".service-header").style.transitionDelay = '0s';
+      img.style.width = `28%`;
+      img.querySelector(".service-header").style.opacity = "1";
+      img.querySelector(".service-header").style.transform =
+        "translate(0px, 50%)rotate(-90deg)";
+      img.querySelector(".service-content").style.opacity = "0";
+      img.querySelector(".service-header").style.fontSize = baseFontSize;
+    }
+    // img.querySelector(".service-header-container").style.right = "20%";
+    // img.querySelector(".service-header").style.height = "90%";
+  });
+
+});
+
+
+servicesHomeContainer.addEventListener("touchleave", () => {
 
   servicesHomeImgs.forEach((img) => {
     if (img.classList.contains("finished")) {
