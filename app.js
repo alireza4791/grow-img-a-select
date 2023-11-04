@@ -187,3 +187,89 @@ servicesHomeContainer.addEventListener("touchleave", () => {
   });
 
 });
+
+
+
+let modalBg = document.querySelector(".dark-modal-bg");
+let modalContainer = document.querySelector(".menu-modal-container");
+let menuTxt = document.querySelector(".menu-text");
+let modalCloseBtn = document.querySelector(".modal-close");
+let listItems = document.querySelectorAll(".list-2 .list-item");
+let modalBtnContainer = document.querySelector(".modal-buttons-container");
+let modalContainerTimeOut;
+let modalContainerTimeOutList;
+
+const modalStateHandler = (state, isMobile) => {
+    switch (state) {
+        case "open":
+            modalBg.style.display = "flex";
+            modalContainerTimeOut = setTimeout(() => {
+                if (isMobile) {
+                    modalContainer.style.width = "60vw";
+                    modalContainer.style.height = "70vw";
+                } else {
+                    modalContainer.style.width = "33vw";
+                    modalContainer.style.height = "40vw";
+                }
+                listItems.forEach((item) => {
+                    item.style.transform = "translate(0px, 0px)";
+                    item.style.opacity = "1";
+                });
+
+                modalBtnContainer.style.transform = "translate(0px, 0px)";
+                modalBtnContainer.style.opacity = "1";
+
+                modalCloseBtn.style.transform = "translate(0px, 0px)";
+                modalCloseBtn.style.opacity = "1";
+                document.querySelector(".modal-services-icon").style.opacity = "1";
+            }, 400);
+            break;
+        case "close":
+            document.querySelector(".modal-services-icon").style.opacity = "0";
+            modalContainer.style.width = "0vw";
+            modalContainer.style.height = "0vw";
+            listItems.forEach((item) => {
+                item.style.opacity = "0";
+            });
+            modalBtnContainer.style.opacity = "0";
+            modalCloseBtn.style.opacity = "0";
+            modalContainerTimeOut = setTimeout(() => {
+                modalBg.style.display = "none";
+
+                modalContainerTimeOutList = setTimeout(() => {
+                    listItems.forEach((item) => {
+                        item.style.transform = "translate(0px, 50px)";
+                    });
+
+                    modalBtnContainer.style.transform = "translate(0px, 50px)";
+
+                    modalCloseBtn.style.transform = "translate(0px, 50px)";
+                }, 500);
+            }, 400);
+            break;
+        default:
+            break;
+    }
+};
+
+if (window.innerWidth <= 768) {
+    menuTxt.addEventListener("touchend", () => {
+        modalStateHandler("open", true);
+    });
+    modalCloseBtn.addEventListener("touchend", () => {
+        modalStateHandler("close", true);
+    });
+    modalBg.addEventListener("touchend", () => {
+        modalStateHandler("close", true);
+    });
+} else {
+    menuTxt.addEventListener("click", () => {
+        modalStateHandler("open", false);
+    });
+    modalCloseBtn.addEventListener("click", () => {
+        modalStateHandler("close", false);
+    });
+    modalBg.addEventListener("click", () => {
+        modalStateHandler("close", false);
+    });
+}
