@@ -63,18 +63,18 @@ document.addEventListener("scroll", () => {
         if (scrollYDiff === 0) {
           scrollYDiff = scrollY;
         } else {
-          servicesImgProps.width = (scrollY - scrollYDiff) / 10;
+          servicesImgProps.width = (scrollY - scrollYDiff) / 9;
           servicesHomeImgs.forEach((img) => {
             img.querySelector(".service-header").style.transitionDelay = '0.5s';
             if (!img.classList.contains("finished")) {
               img.style.width = `${Math.max(
-                Math.min(servicesImgProps.width, 30),
+                Math.min(servicesImgProps.width, 31),
                 15
               )}%`;
             }
           });
 
-          if (Math.max(Math.min(servicesImgProps.width, 30), 15) === 30) {
+          if (Math.max(Math.min(servicesImgProps.width, 31), 15) === 31) {
             servicesHomeImgs.forEach((img) => {
               if (!img.classList.contains("finished")) {
                 img.classList.add("finished");
@@ -112,7 +112,7 @@ servicesHomeImgs.forEach((img) => {
           images.querySelector(".service-header").style.opacity = "1";
           // images.querySelector(".service-header-container").style.right = "45%";
         } else {
-          images.style.width = "60%";
+          images.style.width = "69%";
           images.querySelector(".service-header").style.transform =
             "translate(80px, 50%)rotate(-90deg)";
           images.querySelector(".service-header").style.opacity = "0";
@@ -138,7 +138,7 @@ servicesHomeImgs.forEach((img) => {
           images.querySelector(".service-header").style.opacity = "1";
           // images.querySelector(".service-header-container").style.right = "45%";
         } else {
-          images.style.width = "60%";
+          images.style.width = "69%";
           images.querySelector(".service-header").style.transform =
             "translate(80px, 50%)rotate(-90deg)";
           images.querySelector(".service-header").style.opacity = "0";
@@ -156,7 +156,7 @@ servicesHomeContainer.addEventListener("mouseleave", () => {
   servicesHomeImgs.forEach((img) => {
     if (img.classList.contains("finished")) {
       img.querySelector(".service-header").style.transitionDelay = '0s';
-      img.style.width = `30%`;
+      img.style.width = `31%`;
       img.querySelector(".service-header").style.opacity = "1";
       img.querySelector(".service-header").style.transform =
         "translate(0px, 50%)rotate(-90deg)";
@@ -175,7 +175,7 @@ servicesHomeContainer.addEventListener("touchleave", () => {
   servicesHomeImgs.forEach((img) => {
     if (img.classList.contains("finished")) {
       img.querySelector(".service-header").style.transitionDelay = '0s';
-      img.style.width = `30%`;
+      img.style.width = `31%`;
       img.querySelector(".service-header").style.opacity = "1";
       img.querySelector(".service-header").style.transform =
         "translate(0px, 50%)rotate(-90deg)";
