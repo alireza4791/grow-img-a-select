@@ -104,7 +104,7 @@ servicesHomeImgs.forEach((img) => {
         images.querySelector(".service-header").style.transitionDelay = '0s';
         if (images != img) {
           images.style.width = "12%";
-          images.querySelector(".service-header").style.fontSize = "30px";
+          images.querySelector(".service-header").style.fontSize = window.innerWidth <= 478 ? "16px" : "30px";
           // images.querySelector(".service-header").style.height = "40%";
           images.querySelector(".service-content").style.opacity = "0";
           images.querySelector(".service-header").style.transform =
@@ -130,7 +130,7 @@ servicesHomeImgs.forEach((img) => {
         images.querySelector(".service-header").style.transitionDelay = '0s';
         if (images != img) {
           images.style.width = "12%";
-          images.querySelector(".service-header").style.fontSize = "30px";
+          images.querySelector(".service-header").style.fontSize = window.innerWidth <= 478 ? "16px" : "30px";
           // images.querySelector(".service-header").style.height = "40%";
           images.querySelector(".service-content").style.opacity = "0";
           images.querySelector(".service-header").style.transform =
