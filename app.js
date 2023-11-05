@@ -207,7 +207,7 @@ const modalStateHandler = (state, isMobile) => {
             modalContainerTimeOut = setTimeout(() => {
                 if (isMobile) {
                     modalContainer.style.width = "60vw";
-                    modalContainer.style.height = "85vw";
+                    modalContainer.style.height = window.innerWidth <= 568 ? "85vw" : "70vw";
                 } else {
                     modalContainer.style.width = "33vw";
                     modalContainer.style.height = "40vw";
