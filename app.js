@@ -372,7 +372,7 @@ function initMouseEvents() {
         ) {
             currentStatePartnersSlider++;
         }
-        if (activeSlideIndexPartnersSlider < slidesPartnersSlider.length - 1) {
+        if (activeSlideIndexPartnersSlider < slidesPartnersSlider.length - 1 && window.innerWidth > 900 || activeSlideIndexPartnersSlider < slidesPartnersSlider.length - 2 && window.innerWidth <= 900) {
             removeActiveIndex();
             activeSlideIndexPartnersSlider++;
         }
