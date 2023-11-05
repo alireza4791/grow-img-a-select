@@ -417,11 +417,8 @@ function scrollSlides(currentStatePartnersSlider) {
             translatePartnersSlider - lastIndentPartnersSlider;
     sliderPartnersSlider.style.transform = `translateX(-${translatePartnersSlider}px)`;
 }
-let indexDiff;
 const onpartnerSliderButton = (index) => {
     if (index === activeSlideIndexPartnersSlider) return;
-
-    indexDiff = Math.abs(activeSlideIndexPartnersSlider - index);
 
     if (index === 0) {
         currentStatePartnersSlider = 0;
@@ -433,19 +430,12 @@ const onpartnerSliderButton = (index) => {
                 currentStatePartnersSlider <
                 slidesPartnersSlider.length - visibleSlidesPartnersSlider
             ) {
-                if (window.innerWidth <= 900) {
-                    currentStatePartnersSlider += indexDiff;
-                } else {
-                    currentStatePartnersSlider++;
-                }
+
+                currentStatePartnersSlider++;
             }
         } else if (index < activeSlideIndexPartnersSlider) {
             if (currentStatePartnersSlider > 0) {
-                if (window.innerWidth <= 900) {
-                    currentStatePartnersSlider -= indexDiff;
-                } else {
-                    currentStatePartnersSlider--;
-                }
+                currentStatePartnersSlider--;
             }
         }
     }
