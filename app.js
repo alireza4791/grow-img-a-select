@@ -170,7 +170,7 @@ servicesHomeContainer.addEventListener("mouseleave", () => {
 });
 
 
-servicesHomeContainer.addEventListener("touchleave", () => {
+servicesHomeContainer.addEventListener("touchend", () => {
 
   servicesHomeImgs.forEach((img) => {
     if (img.classList.contains("finished")) {
