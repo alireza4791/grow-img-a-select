@@ -274,3 +274,41 @@ if (window.innerWidth <= 768) {
         modalStateHandler("close", false);
     });
 }
+
+
+
+window.addEventListener("load", () => {
+  let projectImgTitle = document.querySelector(".best-project-img-title");
+
+  document.addEventListener("mousemove", function (e) {
+    if (bestProjectsTitleIndex != -1) {
+      projectImgTitle.style.left = `${e.pageX + 20}px`;
+      projectImgTitle.style.top = `${e.pageY + 15}px`;
+    }
+  });
+
+  let projectsImages = document.querySelectorAll(".best-project-img");
+  let bestProjectsTitleIndex = -1;
+
+  const bestProjectNames = [
+    "Home",
+    "Building",
+    "Story",
+    "Location",
+    "Availability",
+    "Contact",
+  ];
+
+  projectsImages.forEach((img, index) => {
+    img.addEventListener("mousemove", () => {
+      bestProjectsTitleIndex = index;
+      projectImgTitle.style.opacity = "1";
+      projectImgTitle.innerText = bestProjectNames[index];
+    });
+
+    img.addEventListener("mouseleave", () => {
+      bestProjectsTitleIndex = -1;
+      projectImgTitle.style.opacity = "0";
+    });
+  });
+});
