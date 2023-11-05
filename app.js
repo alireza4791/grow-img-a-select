@@ -368,11 +368,11 @@ function initMouseEvents() {
     const rightArrowClickHandler = () => {
         if (
             currentStatePartnersSlider <
-            slidesPartnersSlider.length - visibleSlidesPartnersSlider
+            slidesPartnersSlider.length - 1 - visibleSlidesPartnersSlider
         ) {
             currentStatePartnersSlider++;
         }
-        if (activeSlideIndexPartnersSlider < slidesPartnersSlider.length - 1 && window.innerWidth > 900 || activeSlideIndexPartnersSlider < slidesPartnersSlider.length - 2 && window.innerWidth <= 900) {
+        if (activeSlideIndexPartnersSlider < slidesPartnersSlider.length - 1) {
             removeActiveIndex();
             activeSlideIndexPartnersSlider++;
         }
