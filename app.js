@@ -206,8 +206,14 @@ const modalStateHandler = (state, isMobile) => {
             modalBg.style.display = "flex";
             modalContainerTimeOut = setTimeout(() => {
                 if (isMobile) {
+                    
+                  if(window.innerWidth <= 568){
+                    modalContainer.style.height = window.innerWidth <= 499 ? "520px" : "85vw";
+                    modalContainer.style.width = window.innerWidth <= 499 ? "90vw" : "65vw";
+                  } else {
+                    modalContainer.style.height ="70vw";
                     modalContainer.style.width = "60vw";
-                    modalContainer.style.height = window.innerWidth <= 568 ? "85vw" : "70vw";
+                  }
                 } else {
                     modalContainer.style.width = "33vw";
                     modalContainer.style.height = "40vw";
