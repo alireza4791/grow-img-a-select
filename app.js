@@ -2,189 +2,189 @@ let servicesHomeGrid = document.querySelector(".bordered");
 let serviesHomeBox = document.querySelector(".div-block-4");
 let servicesHomeImgs = document.querySelectorAll(".services-img");
 let servicesHomeContainer = document.querySelector(
-  ".services-img-container-flex"
+    ".services-img-container-flex"
 );
 
 let prevScroll = 0;
 //helper function
 function li(a, b, n) {
-  return (1 - n) * a + n * b;
+    return (1 - n) * a + n * b;
 }
 
 let servicesImgProps = {
-  width: 15,
+    width: 15,
 };
 
 function isVisible(ele) {
-  const { top, bottom } = ele.getBoundingClientRect();
-  const vHeight = (window.innerHeight || document.documentElement.clientHeight);
+    const { top, bottom } = ele.getBoundingClientRect();
+    const vHeight = (window.innerHeight || document.documentElement.clientHeight);
 
-  return (
-    (top > 0 || bottom > 0) &&
-    top < vHeight
-  );
+    return (
+        (top > 0 || bottom > 0) &&
+        top < vHeight
+    );
 }
 
 let middleImg;
 servicesHomeImgs.forEach((img) => {
-  if (img.classList.contains("middle")) {
-    middleImg = img;
-  }
+    if (img.classList.contains("middle")) {
+        middleImg = img;
+    }
 });
 
 let middleImgTransform = 7;
 let scrollYDiff = 0;
 let baseFontSize = window
-  .getComputedStyle(
-    document.querySelector(".services-img .service-header"),
-    null
-  )
-  .getPropertyValue("font-size");
+    .getComputedStyle(
+        document.querySelector(".services-img .service-header"),
+        null
+    )
+    .getPropertyValue("font-size");
 
 document.addEventListener("scroll", () => {
-  if (isVisible(servicesHomeGrid)) {
-    if (middleImg) {
-      middleImgTransform = Math.min(scrollY / 100, 7);
-      servicesHomeImgs[0].style.transform = `translate(0, -${middleImgTransform}vh)`;
-      servicesHomeImgs[2].style.transform = `translate(0, -${middleImgTransform}vh)`;
+    if (isVisible(servicesHomeGrid)) {
+        if (middleImg) {
+            middleImgTransform = Math.min(scrollY / 100, 7);
+            servicesHomeImgs[0].style.transform = `translate(0, -${middleImgTransform}vh)`;
+            servicesHomeImgs[2].style.transform = `translate(0, -${middleImgTransform}vh)`;
 
-      if (scrollY < prevScroll) {
-        servicesHomeImgs.forEach((images) => {
-          if (!images.classList.contains('finished')) {
-            images.querySelector(".service-header").style.transform =
-              "translate(80px, 50%)rotate(-90deg)";
-            images.querySelector(".service-header").style.opacity = "0";
-            images.querySelector(".service-content").style.opacity = "0";
-          }
-        })
-      }
-
-      if (middleImgTransform === 7) {
-        if (scrollYDiff === 0) {
-          scrollYDiff = scrollY;
-        } else {
-          servicesImgProps.width = window.innerWidth > 900 ? (scrollY - scrollYDiff) / 8 : (scrollY - scrollYDiff) / 6;
-          servicesHomeImgs.forEach((img) => {
-            img.querySelector(".service-header").style.transitionDelay = '0.5s';
-            if (!img.classList.contains("finished")) {
-              img.style.width = `${Math.max(
-                Math.min(servicesImgProps.width, 31),
-                15
-              )}%`;
+            if (scrollY < prevScroll) {
+                servicesHomeImgs.forEach((images) => {
+                    if (!images.classList.contains('finished')) {
+                        images.querySelector(".service-header").style.transform =
+                            "translate(80px, 50%)rotate(-90deg)";
+                        images.querySelector(".service-header").style.opacity = "0";
+                        images.querySelector(".service-content").style.opacity = "0";
+                    }
+                })
             }
-          });
 
-          if (Math.max(Math.min(servicesImgProps.width, 31), 15) === 31) {
-            servicesHomeImgs.forEach((img) => {
-              if (!img.classList.contains("finished")) {
-                img.classList.add("finished");
-                img.querySelector(".service-header").style.transform =
-                  "translate(0px, 50%)rotate(-90deg)";
-                img.querySelector(".service-header").style.opacity = "1";
-              }
-            });
-          } else {
-            servicesHomeImgs.forEach((img) => {
-              if (img.classList.contains("finished")) {
-                img.classList.remove("finished");
-              }
-            });
-          }
+            if (middleImgTransform === 7) {
+                if (scrollYDiff === 0) {
+                    scrollYDiff = scrollY;
+                } else {
+                    servicesImgProps.width = window.innerWidth > 900 ? (scrollY - scrollYDiff) / 8 : (scrollY - scrollYDiff) / 6;
+                    servicesHomeImgs.forEach((img) => {
+                        img.querySelector(".service-header").style.transitionDelay = '0.5s';
+                        if (!img.classList.contains("finished")) {
+                            img.style.width = `${Math.max(
+                                Math.min(servicesImgProps.width, 31),
+                                15
+                            )}%`;
+                        }
+                    });
+
+                    if (Math.max(Math.min(servicesImgProps.width, 31), 15) === 31) {
+                        servicesHomeImgs.forEach((img) => {
+                            if (!img.classList.contains("finished")) {
+                                img.classList.add("finished");
+                                img.querySelector(".service-header").style.transform =
+                                    "translate(0px, 50%)rotate(-90deg)";
+                                img.querySelector(".service-header").style.opacity = "1";
+                            }
+                        });
+                    } else {
+                        servicesHomeImgs.forEach((img) => {
+                            if (img.classList.contains("finished")) {
+                                img.classList.remove("finished");
+                            }
+                        });
+                    }
+                }
+            }
         }
-      }
     }
-  }
-  prevScroll = scrollY
+    prevScroll = scrollY
 });
 
 servicesHomeImgs.forEach((img) => {
-  img.addEventListener("mousemove", () => {
-    if (img.classList.contains("finished")) {
-      servicesHomeImgs.forEach((images) => {
-        images.querySelector(".service-header").style.transitionDelay = '0s';
-        if (images != img) {
-          images.style.width = "12%";
-          images.querySelector(".service-header").style.fontSize = window.innerWidth <= 478 ? "16px" : "30px";
-          // images.querySelector(".service-header").style.height = "40%";
-          images.querySelector(".service-content").style.opacity = "0";
-          images.querySelector(".service-header").style.transform =
-            "translate(0px, 50%)rotate(-90deg)";
-          images.querySelector(".service-header").style.opacity = "1";
-          // images.querySelector(".service-header-container").style.right = "45%";
-        } else {
-          images.style.width = "69%";
-          images.querySelector(".service-header").style.transform =
-            "translate(80px, 50%)rotate(-90deg)";
-          images.querySelector(".service-header").style.opacity = "0";
-          images.querySelector(".service-content").style.opacity = "1";
-          // images.querySelector(".service-header-container").style.right = "20%";
-          // images.querySelector(".service-header").style.height = "90%";
+    img.addEventListener("mousemove", () => {
+        if (img.classList.contains("finished")) {
+            servicesHomeImgs.forEach((images) => {
+                images.querySelector(".service-header").style.transitionDelay = '0s';
+                if (images != img) {
+                    images.style.width = "12%";
+                    images.querySelector(".service-header").style.fontSize = window.innerWidth <= 478 ? "16px" : "30px";
+                    // images.querySelector(".service-header").style.height = "40%";
+                    images.querySelector(".service-content").style.opacity = "0";
+                    images.querySelector(".service-header").style.transform =
+                        "translate(0px, 50%)rotate(-90deg)";
+                    images.querySelector(".service-header").style.opacity = "1";
+                    // images.querySelector(".service-header-container").style.right = "45%";
+                } else {
+                    images.style.width = "69%";
+                    images.querySelector(".service-header").style.transform =
+                        "translate(80px, 50%)rotate(-90deg)";
+                    images.querySelector(".service-header").style.opacity = "0";
+                    images.querySelector(".service-content").style.opacity = "1";
+                    // images.querySelector(".service-header-container").style.right = "20%";
+                    // images.querySelector(".service-header").style.height = "90%";
+                }
+            });
         }
-      });
-    }
-  });
+    });
 
-  img.addEventListener("touchmove", () => {
-    if (img.classList.contains("finished")) {
-      servicesHomeImgs.forEach((images) => {
-        images.querySelector(".service-header").style.transitionDelay = '0s';
-        if (images != img) {
-          images.style.width = "12%";
-          images.querySelector(".service-header").style.fontSize = window.innerWidth <= 478 ? "16px" : "30px";
-          // images.querySelector(".service-header").style.height = "40%";
-          images.querySelector(".service-content").style.opacity = "0";
-          images.querySelector(".service-header").style.transform =
-            "translate(0px, 50%)rotate(-90deg)";
-          images.querySelector(".service-header").style.opacity = "1";
-          // images.querySelector(".service-header-container").style.right = "45%";
-        } else {
-          images.style.width = "69%";
-          images.querySelector(".service-header").style.transform =
-            "translate(80px, 50%)rotate(-90deg)";
-          images.querySelector(".service-header").style.opacity = "0";
-          images.querySelector(".service-content").style.opacity = "1";
-          // images.querySelector(".service-header-container").style.right = "20%";
-          // images.querySelector(".service-header").style.height = "90%";
+    img.addEventListener("touchmove", () => {
+        if (img.classList.contains("finished")) {
+            servicesHomeImgs.forEach((images) => {
+                images.querySelector(".service-header").style.transitionDelay = '0s';
+                if (images != img) {
+                    images.style.width = "12%";
+                    images.querySelector(".service-header").style.fontSize = window.innerWidth <= 478 ? "16px" : "30px";
+                    // images.querySelector(".service-header").style.height = "40%";
+                    images.querySelector(".service-content").style.opacity = "0";
+                    images.querySelector(".service-header").style.transform =
+                        "translate(0px, 50%)rotate(-90deg)";
+                    images.querySelector(".service-header").style.opacity = "1";
+                    // images.querySelector(".service-header-container").style.right = "45%";
+                } else {
+                    images.style.width = "69%";
+                    images.querySelector(".service-header").style.transform =
+                        "translate(80px, 50%)rotate(-90deg)";
+                    images.querySelector(".service-header").style.opacity = "0";
+                    images.querySelector(".service-content").style.opacity = "1";
+                    // images.querySelector(".service-header-container").style.right = "20%";
+                    // images.querySelector(".service-header").style.height = "90%";
+                }
+            });
         }
-      });
-    }
-  });
+    });
 });
 
 servicesHomeContainer.addEventListener("mouseleave", () => {
 
-  servicesHomeImgs.forEach((img) => {
-    if (img.classList.contains("finished")) {
-      img.querySelector(".service-header").style.transitionDelay = '0s';
-      img.style.width = `31%`;
-      img.querySelector(".service-header").style.opacity = "1";
-      img.querySelector(".service-header").style.transform =
-        "translate(0px, 50%)rotate(-90deg)";
-      img.querySelector(".service-content").style.opacity = "0";
-      img.querySelector(".service-header").style.fontSize = baseFontSize;
-    }
-    // img.querySelector(".service-header-container").style.right = "20%";
-    // img.querySelector(".service-header").style.height = "90%";
-  });
+    servicesHomeImgs.forEach((img) => {
+        if (img.classList.contains("finished")) {
+            img.querySelector(".service-header").style.transitionDelay = '0s';
+            img.style.width = `31%`;
+            img.querySelector(".service-header").style.opacity = "1";
+            img.querySelector(".service-header").style.transform =
+                "translate(0px, 50%)rotate(-90deg)";
+            img.querySelector(".service-content").style.opacity = "0";
+            img.querySelector(".service-header").style.fontSize = baseFontSize;
+        }
+        // img.querySelector(".service-header-container").style.right = "20%";
+        // img.querySelector(".service-header").style.height = "90%";
+    });
 
 });
 
 
 servicesHomeContainer.addEventListener("touchend", () => {
 
-  servicesHomeImgs.forEach((img) => {
-    if (img.classList.contains("finished")) {
-      img.querySelector(".service-header").style.transitionDelay = '0s';
-      img.style.width = `31%`;
-      img.querySelector(".service-header").style.opacity = "1";
-      img.querySelector(".service-header").style.transform =
-        "translate(0px, 50%)rotate(-90deg)";
-      img.querySelector(".service-content").style.opacity = "0";
-      img.querySelector(".service-header").style.fontSize = baseFontSize;
-    }
-    // img.querySelector(".service-header-container").style.right = "20%";
-    // img.querySelector(".service-header").style.height = "90%";
-  });
+    servicesHomeImgs.forEach((img) => {
+        if (img.classList.contains("finished")) {
+            img.querySelector(".service-header").style.transitionDelay = '0s';
+            img.style.width = `31%`;
+            img.querySelector(".service-header").style.opacity = "1";
+            img.querySelector(".service-header").style.transform =
+                "translate(0px, 50%)rotate(-90deg)";
+            img.querySelector(".service-content").style.opacity = "0";
+            img.querySelector(".service-header").style.fontSize = baseFontSize;
+        }
+        // img.querySelector(".service-header-container").style.right = "20%";
+        // img.querySelector(".service-header").style.height = "90%";
+    });
 
 });
 
@@ -206,14 +206,14 @@ const modalStateHandler = (state, isMobile) => {
             modalBg.style.display = "flex";
             modalContainerTimeOut = setTimeout(() => {
                 if (isMobile) {
-                    
-                  if(window.innerWidth <= 568){
-                    modalContainer.style.height = window.innerWidth <= 499 ? "520px" : "85vw";
-                    modalContainer.style.width = window.innerWidth <= 499 ? "90vw" : "65vw";
-                  } else {
-                    modalContainer.style.height ="70vw";
-                    modalContainer.style.width = "60vw";
-                  }
+
+                    if (window.innerWidth <= 568) {
+                        modalContainer.style.height = window.innerWidth <= 499 ? "520px" : "85vw";
+                        modalContainer.style.width = window.innerWidth <= 499 ? "90vw" : "65vw";
+                    } else {
+                        modalContainer.style.height = "70vw";
+                        modalContainer.style.width = "60vw";
+                    }
                 } else {
                     modalContainer.style.width = "33vw";
                     modalContainer.style.height = "40vw";
@@ -284,39 +284,39 @@ if (window.innerWidth <= 768) {
 
 
 window.addEventListener("load", () => {
-  let projectImgTitle = document.querySelector(".best-project-img-title");
+    let projectImgTitle = document.querySelector(".best-project-img-title");
 
-  document.addEventListener("mousemove", function (e) {
-    if (bestProjectsTitleIndex != -1) {
-      projectImgTitle.style.left = `${e.pageX + 20}px`;
-      projectImgTitle.style.top = `${e.pageY + 15}px`;
-    }
-  });
-
-  let projectsImages = document.querySelectorAll(".best-project-img");
-  let bestProjectsTitleIndex = -1;
-
-  const bestProjectNames = [
-    "Home",
-    "Building",
-    "Story",
-    "Location",
-    "Availability",
-    "Contact",
-  ];
-
-  projectsImages.forEach((img, index) => {
-    img.addEventListener("mousemove", () => {
-      bestProjectsTitleIndex = index;
-      projectImgTitle.style.opacity = "1";
-      projectImgTitle.innerText = bestProjectNames[index];
+    document.addEventListener("mousemove", function (e) {
+        if (bestProjectsTitleIndex != -1) {
+            projectImgTitle.style.left = `${e.pageX + 20}px`;
+            projectImgTitle.style.top = `${e.pageY + 15}px`;
+        }
     });
 
-    img.addEventListener("mouseleave", () => {
-      bestProjectsTitleIndex = -1;
-      projectImgTitle.style.opacity = "0";
+    let projectsImages = document.querySelectorAll(".best-project-img");
+    let bestProjectsTitleIndex = -1;
+
+    const bestProjectNames = [
+        "Home",
+        "Building",
+        "Story",
+        "Location",
+        "Availability",
+        "Contact",
+    ];
+
+    projectsImages.forEach((img, index) => {
+        img.addEventListener("mousemove", () => {
+            bestProjectsTitleIndex = index;
+            projectImgTitle.style.opacity = "1";
+            projectImgTitle.innerText = bestProjectNames[index];
+        });
+
+        img.addEventListener("mouseleave", () => {
+            bestProjectsTitleIndex = -1;
+            projectImgTitle.style.opacity = "0";
+        });
     });
-  });
 });
 
 
@@ -372,15 +372,20 @@ function initMouseEvents() {
         ) {
             currentStatePartnersSlider++;
         }
-            if (activeSlideIndexPartnersSlider < slidesPartnersSlider.length - 1) {
-                removeActiveIndex();
-                activeSlideIndexPartnersSlider++;
-            }
+        if (activeSlideIndexPartnersSlider < slidesPartnersSlider.length - 1) {
+            removeActiveIndex();
+            activeSlideIndexPartnersSlider++;
+        }
         addActiveIndex();
         scrollSlides(currentStatePartnersSlider);
     };
-    rightArrowPartnersSlider.addEventListener("click", rightArrowClickHandler);
-    rightArrowPartnersSlider.addEventListener("touchend", rightArrowClickHandler);
+    if (window.innerWidth <= 900) {
+        rightArrowPartnersSlider.addEventListener("touchend", rightArrowClickHandler);
+    } else {
+        rightArrowPartnersSlider.addEventListener("click", rightArrowClickHandler);
+    }
+
+
     const leftArrowClickHandler = () => {
         if (currentStatePartnersSlider > 0) {
             currentStatePartnersSlider--;
@@ -392,8 +397,12 @@ function initMouseEvents() {
         addActiveIndex();
         scrollSlides(currentStatePartnersSlider);
     };
-    leftArrowPartnersSlider.addEventListener("click", leftArrowClickHandler);
-    leftArrowPartnersSlider.addEventListener("touchend", leftArrowClickHandler);
+
+    if (window.innerWidth <= 900) {
+        leftArrowPartnersSlider.addEventListener("touchend", leftArrowClickHandler);
+    } else {
+        leftArrowPartnersSlider.addEventListener("click", leftArrowClickHandler);
+    }
 }
 let translatePartnersSlider;
 function scrollSlides(currentStatePartnersSlider) {
