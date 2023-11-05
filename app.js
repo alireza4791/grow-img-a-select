@@ -366,17 +366,10 @@ function initMouseEvents() {
         ) {
             currentStatePartnersSlider++;
         }
-        if (window.innerWidth > 900) {
             if (activeSlideIndexPartnersSlider < slidesPartnersSlider.length - 1) {
                 removeActiveIndex();
                 activeSlideIndexPartnersSlider++;
             }
-        } else {
-            if (activeSlideIndexPartnersSlider < slidesPartnersSlider.length - 2) {
-                removeActiveIndex();
-                activeSlideIndexPartnersSlider++;
-            }
-        }
         addActiveIndex();
         scrollSlides(currentStatePartnersSlider);
     };
