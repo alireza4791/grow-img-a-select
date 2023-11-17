@@ -1,192 +1,197 @@
-let servicesHomeGrid = document.querySelector(".bordered");
-let serviesHomeBox = document.querySelector(".div-block-4");
-let servicesHomeImgs = document.querySelectorAll(".services-img");
-let servicesHomeContainer = document.querySelector(
-    ".services-img-container-flex"
-);
 
-let prevScroll = 0;
-//helper function
-function li(a, b, n) {
-    return (1 - n) * a + n * b;
-}
+	let servicesHomeGrid = document.querySelector(".bordered");
+	let serviesHomeBox = document.querySelector(".div-block-4");
+	let servicesHomeImgs = document.querySelectorAll(".services-img");
+	let servicesHomeContainer = document.querySelector(
+		".services-img-container-flex"
+	);
 
-let servicesImgProps = {
-    width: 15,
-};
+	let prevScroll = 0;
+	//helper function
+	function li(a, b, n) {
+		return (1 - n) * a + n * b;
+	}
 
-function isVisible(ele) {
-    const { top, bottom } = ele.getBoundingClientRect();
-    const vHeight = (window.innerHeight || document.documentElement.clientHeight);
+	let servicesImgProps = {
+		width: 15,
+	};
 
-    return (
-        (top > 0 || bottom > 0) &&
-        top < vHeight
-    );
-}
+	function isVisible(ele) {
+		const { top, bottom } = ele.getBoundingClientRect();
+		const vHeight = (window.innerHeight || document.documentElement.clientHeight);
 
-let middleImg;
-servicesHomeImgs.forEach((img) => {
-    if (img.classList.contains("middle")) {
-        middleImg = img;
-    }
-});
+		return (
+			(top > 0 || bottom > 0) &&
+			top < vHeight
+		);
+	}
 
-let middleImgTransform = 7;
-let scrollYDiff = 0;
-let baseFontSize = window
-    .getComputedStyle(
-        document.querySelector(".services-img .service-header"),
-        null
-    )
-    .getPropertyValue("font-size");
+	let middleImg;
+	servicesHomeImgs.forEach((img) => {
+		if (img.classList.contains("middle")) {
+			middleImg = img;
+		}
+	});
 
-document.addEventListener("scroll", () => {
-    if (isVisible(servicesHomeGrid)) {
-        if (middleImg) {
-            middleImgTransform = Math.min(scrollY / 100, 7);
-            servicesHomeImgs[0].style.transform = `translate(0, -${middleImgTransform}vh)`;
-            servicesHomeImgs[2].style.transform = `translate(0, -${middleImgTransform}vh)`;
+	let middleImgTransform = 7;
+	let scrollYDiff = 0;
+	let baseFontSize = window
+		.getComputedStyle(
+			document.querySelector(".services-img .service-header"),
+			null
+		)
+		.getPropertyValue("font-size");
 
-            if (scrollY < prevScroll) {
-                servicesHomeImgs.forEach((images) => {
-                    if (!images.classList.contains('finished')) {
-                        images.querySelector(".service-header").style.transform =
-                            "translate(80px, 50%)rotate(-90deg)";
-                        images.querySelector(".service-header").style.opacity = "0";
-                        images.querySelector(".service-content").style.opacity = "0";
-                    }
-                })
-            }
+	document.addEventListener("scroll", () => {
+		if (window.innerWidth > 991) {
+			if (isVisible(servicesHomeGrid)) {
+				if (middleImg) {
+					middleImgTransform = Math.min(scrollY / 100, 7);
+					servicesHomeImgs[0].style.transform = `translate(0, -${middleImgTransform}vh)`;
+					servicesHomeImgs[2].style.transform = `translate(0, -${middleImgTransform}vh)`;
 
-            if (middleImgTransform === 7) {
-                if (scrollYDiff === 0) {
-                    scrollYDiff = scrollY;
-                } else {
-                    servicesImgProps.width = window.innerWidth > 900 ? (scrollY - scrollYDiff) / 8 : (scrollY - scrollYDiff) / 6;
-                    servicesHomeImgs.forEach((img) => {
-                        img.querySelector(".service-header").style.transitionDelay = '0.5s';
-                        if (!img.classList.contains("finished")) {
-                            img.style.width = `${Math.max(
-                                Math.min(servicesImgProps.width, 31),
-                                15
-                            )}%`;
-                        }
-                    });
+					if (scrollY < prevScroll) {
+						servicesHomeImgs.forEach((images) => {
+							if (!images.classList.contains('finished')) {
+								images.querySelector(".service-header").style.transform =
+									"translate(80px, 50%)rotate(-90deg)";
+								images.querySelector(".service-header").style.opacity = "0";
+								images.querySelector(".service-content").style.opacity = "0";
+							}
+						})
+					}
 
-                    if (Math.max(Math.min(servicesImgProps.width, 31), 15) === 31) {
-                        servicesHomeImgs.forEach((img) => {
-                            if (!img.classList.contains("finished")) {
-                                img.classList.add("finished");
-                                img.querySelector(".service-header").style.transform =
-                                    "translate(0px, 50%)rotate(-90deg)";
-                                img.querySelector(".service-header").style.opacity = "1";
-                            }
-                        });
-                    } else {
-                        servicesHomeImgs.forEach((img) => {
-                            if (img.classList.contains("finished")) {
-                                img.classList.remove("finished");
-                            }
-                        });
-                    }
-                }
-            }
-        }
-    }
-    prevScroll = scrollY
-});
+					if (middleImgTransform === 7) {
+						if (scrollYDiff === 0) {
+							scrollYDiff = scrollY;
+						} else {
+							servicesImgProps.width = window.innerWidth > 900 ? (scrollY - scrollYDiff) / 8 : (scrollY - scrollYDiff) / 6;
+							servicesHomeImgs.forEach((img) => {
+								img.querySelector(".service-header").style.transitionDelay = '0.5s';
+								if (!img.classList.contains("finished")) {
+									img.style.width = `${Math.max(
+										Math.min(servicesImgProps.width, 31),
+										15
+									)}%`;
+								}
+							});
 
-servicesHomeImgs.forEach((img) => {
-    img.addEventListener("mousemove", () => {
-        if (img.classList.contains("finished")) {
-            servicesHomeImgs.forEach((images) => {
-                images.querySelector(".service-header").style.transitionDelay = '0s';
-                if (images != img) {
-                    images.style.width = "12%";
-                    images.querySelector(".service-header").style.fontSize = window.innerWidth <= 478 ? "16px" : "30px";
-                    // images.querySelector(".service-header").style.height = "40%";
-                    images.querySelector(".service-content").style.opacity = "0";
-                    images.querySelector(".service-header").style.transform =
-                        "translate(0px, 50%)rotate(-90deg)";
-                    images.querySelector(".service-header").style.opacity = "1";
-                    // images.querySelector(".service-header-container").style.right = "45%";
-                } else {
-                    images.style.width = "69%";
-                    images.querySelector(".service-header").style.transform =
-                        "translate(80px, 50%)rotate(-90deg)";
-                    images.querySelector(".service-header").style.opacity = "0";
-                    images.querySelector(".service-content").style.opacity = "1";
-                    // images.querySelector(".service-header-container").style.right = "20%";
-                    // images.querySelector(".service-header").style.height = "90%";
-                }
-            });
-        }
-    });
+							if (Math.max(Math.min(servicesImgProps.width, 31), 15) === 31) {
+								servicesHomeImgs.forEach((img) => {
+									if (!img.classList.contains("finished")) {
+										img.classList.add("finished");
+										img.querySelector(".service-header").style.transform =
+											"translate(0px, 50%)rotate(-90deg)";
+										img.querySelector(".service-header").style.opacity = "1";
+									}
+								});
+							} else {
+								servicesHomeImgs.forEach((img) => {
+									if (img.classList.contains("finished")) {
+										img.classList.remove("finished");
+									}
+								});
+							}
+						}
+					}
+				}
+			}
+			prevScroll = scrollY
+		}
+	});
 
-    img.addEventListener("touchmove", () => {
-        if (img.classList.contains("finished")) {
-            servicesHomeImgs.forEach((images) => {
-                images.querySelector(".service-header").style.transitionDelay = '0s';
-                if (images != img) {
-                    images.style.width = "12%";
-                    images.querySelector(".service-header").style.fontSize = window.innerWidth <= 478 ? "16px" : "30px";
-                    // images.querySelector(".service-header").style.height = "40%";
-                    images.querySelector(".service-content").style.opacity = "0";
-                    images.querySelector(".service-header").style.transform =
-                        "translate(0px, 50%)rotate(-90deg)";
-                    images.querySelector(".service-header").style.opacity = "1";
-                    // images.querySelector(".service-header-container").style.right = "45%";
-                } else {
-                    images.style.width = "69%";
-                    images.querySelector(".service-header").style.transform =
-                        "translate(80px, 50%)rotate(-90deg)";
-                    images.querySelector(".service-header").style.opacity = "0";
-                    images.querySelector(".service-content").style.opacity = "1";
-                    // images.querySelector(".service-header-container").style.right = "20%";
-                    // images.querySelector(".service-header").style.height = "90%";
-                }
-            });
-        }
-    });
-});
+	servicesHomeImgs.forEach((img) => {
+		img.addEventListener("mousemove", () => {
+			if (window.innerWidth > 991) {
+				if (img.classList.contains("finished")) {
+					servicesHomeImgs.forEach((images) => {
+						images.querySelector(".service-header").style.transitionDelay = '0s';
+						if (images != img) {
+							images.style.width = "12%";
+							images.querySelector(".service-header").style.fontSize = window.innerWidth <= 478 ? "16px" : "30px";
+							// images.querySelector(".service-header").style.height = "40%";
+							images.querySelector(".service-content").style.opacity = "0";
+							images.querySelector(".service-header").style.transform =
+								"translate(0px, 50%)rotate(-90deg)";
+							images.querySelector(".service-header").style.opacity = "1";
+							// images.querySelector(".service-header-container").style.right = "45%";
+						} else {
+							images.style.width = "69%";
+							images.querySelector(".service-header").style.transform =
+								"translate(80px, 50%)rotate(-90deg)";
+							images.querySelector(".service-header").style.opacity = "0";
+							images.querySelector(".service-content").style.opacity = "1";
+							// images.querySelector(".service-header-container").style.right = "20%";
+							// images.querySelector(".service-header").style.height = "90%";
+						}
+					});
+				}
+			}
+		});
 
-servicesHomeContainer.addEventListener("mouseleave", () => {
+		// img.addEventListener("touchmove", () => {
+		// 	if (img.classList.contains("finished")) {
+		// 		servicesHomeImgs.forEach((images) => {
+		// 			images.querySelector(".service-header").style.transitionDelay = '0s';
+		// 			if (images != img) {
+		// 				images.style.width = "12%";
+		// 				images.querySelector(".service-header").style.fontSize = window.innerWidth <= 478 ? "16px" : "30px";
+		// 				// images.querySelector(".service-header").style.height = "40%";
+		// 				images.querySelector(".service-content").style.opacity = "0";
+		// 				images.querySelector(".service-header").style.transform =
+		// 					"translate(0px, 50%)rotate(-90deg)";
+		// 				images.querySelector(".service-header").style.opacity = "1";
+		// 				// images.querySelector(".service-header-container").style.right = "45%";
+		// 			} else {
+		// 				images.style.width = "69%";
+		// 				images.querySelector(".service-header").style.transform =
+		// 					"translate(80px, 50%)rotate(-90deg)";
+		// 				images.querySelector(".service-header").style.opacity = "0";
+		// 				images.querySelector(".service-content").style.opacity = "1";
+		// 				// images.querySelector(".service-header-container").style.right = "20%";
+		// 				// images.querySelector(".service-header").style.height = "90%";
+		// 			}
+		// 		});
+		// 	}
+		// });
+	});
 
-    servicesHomeImgs.forEach((img) => {
-        if (img.classList.contains("finished")) {
-            img.querySelector(".service-header").style.transitionDelay = '0s';
-            img.style.width = `31%`;
-            img.querySelector(".service-header").style.opacity = "1";
-            img.querySelector(".service-header").style.transform =
-                "translate(0px, 50%)rotate(-90deg)";
-            img.querySelector(".service-content").style.opacity = "0";
-            img.querySelector(".service-header").style.fontSize = baseFontSize;
-        }
-        // img.querySelector(".service-header-container").style.right = "20%";
-        // img.querySelector(".service-header").style.height = "90%";
-    });
+	servicesHomeContainer.addEventListener("mouseleave", () => {
+		if (window.innerWidth > 991) {
+			servicesHomeImgs.forEach((img) => {
+				if (img.classList.contains("finished")) {
+					img.querySelector(".service-header").style.transitionDelay = '0s';
+					img.style.width = `31%`;
+					img.querySelector(".service-header").style.opacity = "1";
+					img.querySelector(".service-header").style.transform =
+						"translate(0px, 50%)rotate(-90deg)";
+					img.querySelector(".service-content").style.opacity = "0";
+					img.querySelector(".service-header").style.fontSize = baseFontSize;
+				}
+				// img.querySelector(".service-header-container").style.right = "20%";
+				// img.querySelector(".service-header").style.height = "90%";
+			});
+		}
+	});
 
-});
 
+	// servicesHomeContainer.addEventListener("touchend", () => {
 
-servicesHomeContainer.addEventListener("touchend", () => {
+	// 	servicesHomeImgs.forEach((img) => {
+	// 		if (img.classList.contains("finished")) {
+	// 			img.querySelector(".service-header").style.transitionDelay = '0s';
+	// 			img.style.width = `31%`;
+	// 			img.querySelector(".service-header").style.opacity = "1";
+	// 			img.querySelector(".service-header").style.transform =
+	// 				"translate(0px, 50%)rotate(-90deg)";
+	// 			img.querySelector(".service-content").style.opacity = "0";
+	// 			img.querySelector(".service-header").style.fontSize = baseFontSize;
+	// 		}
+	// 		// img.querySelector(".service-header-container").style.right = "20%";
+	// 		// img.querySelector(".service-header").style.height = "90%";
+	// 	});
 
-    servicesHomeImgs.forEach((img) => {
-        if (img.classList.contains("finished")) {
-            img.querySelector(".service-header").style.transitionDelay = '0s';
-            img.style.width = `31%`;
-            img.querySelector(".service-header").style.opacity = "1";
-            img.querySelector(".service-header").style.transform =
-                "translate(0px, 50%)rotate(-90deg)";
-            img.querySelector(".service-content").style.opacity = "0";
-            img.querySelector(".service-header").style.fontSize = baseFontSize;
-        }
-        // img.querySelector(".service-header-container").style.right = "20%";
-        // img.querySelector(".service-header").style.height = "90%";
-    });
-
-});
+	// });
 
 
 
