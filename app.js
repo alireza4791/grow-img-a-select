@@ -459,6 +459,5 @@ window.addEventListener("load", () => {
 				onpartnerSliderButton(index)
 			})
 		})
-	});
 
 
