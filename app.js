@@ -326,126 +326,139 @@ window.addEventListener("load", () => {
 
 
 
-let sliderPartnersSlider = document.getElementById("slides-partners"),
-    slidesPartnersSlider =
-        sliderPartnersSlider.querySelectorAll(".slide-partners"),
-    slideWidthPartnersSlider = slidesPartnersSlider[0].offsetWidth,
-    visibleSlidesPartnersSlider =
-        Math.floor(window.innerWidth / slideWidthPartnersSlider) - 1,
-    currentStatePartnersSlider = 0,
-    lastIndentPartnersSlider = 20,
-    activeSlideIndexPartnersSlider = window.innerWidth <= 768 ? 0 : 2;
-let rightArrowPartnersSlider = document.querySelector(
-    ".direction-arrow-partners.right"
-);
-let leftArrowPartnersSlider = document.querySelector(
-    ".direction-arrow-partners.left"
-);
-let slideButtonsPartnersSlider = document.querySelectorAll(
-    ".slide-button-partners"
-);
-let allSlideTextsPartnersSlider = document.querySelectorAll(
-    ".slide-text-partners"
-);
-initMouseEvents();
-const addActiveIndex = () => {
-    slideButtonsPartnersSlider[activeSlideIndexPartnersSlider].classList.add(
-        "active"
-    );
-    slidesPartnersSlider[activeSlideIndexPartnersSlider].classList.add("active");
-    allSlideTextsPartnersSlider[activeSlideIndexPartnersSlider].classList.add(
-        "active"
-    );
-};
-const removeActiveIndex = () => {
-    slideButtonsPartnersSlider[activeSlideIndexPartnersSlider].classList.remove(
-        "active"
-    );
-    slidesPartnersSlider[activeSlideIndexPartnersSlider].classList.remove(
-        "active"
-    );
-    allSlideTextsPartnersSlider[activeSlideIndexPartnersSlider].classList.remove(
-        "active"
-    );
-};
-addActiveIndex();
-function initMouseEvents() {
-    const rightArrowClickHandler = () => {
-        if (
-            currentStatePartnersSlider <
-            slidesPartnersSlider.length - 1 - visibleSlidesPartnersSlider
-        ) {
-            currentStatePartnersSlider++;
-        }
-        if (activeSlideIndexPartnersSlider < slidesPartnersSlider.length - 1) {
-            removeActiveIndex();
-            activeSlideIndexPartnersSlider++;
-        }
-        addActiveIndex();
-        scrollSlides(currentStatePartnersSlider);
-    };
-    if (window.innerWidth <= 900) {
-        rightArrowPartnersSlider.addEventListener("touchend", rightArrowClickHandler);
-    } else {
-        rightArrowPartnersSlider.addEventListener("click", rightArrowClickHandler);
-    }
+	//partners slider
+
+		let sliderPartnersSlider = document.getElementById("slides-partners"),
+			slidesPartnersSlider =
+				document.querySelectorAll("#partner-slider-item"),
+			slideWidthPartnersSlider = slidesPartnersSlider[0].offsetWidth,
+			visibleSlidesPartnersSlider =
+				Math.floor(window.innerWidth / slideWidthPartnersSlider) - 1,
+			currentStatePartnersSlider = 0,
+			lastIndentPartnersSlider = 20,
+			activeSlideIndexPartnersSlider = window.innerWidth <= 768 ? 0 : 2;
+		let rightArrowPartnersSlider = document.querySelector(
+			".direction-arrow-partners.right"
+		);
+		let leftArrowPartnersSlider = document.querySelector(
+			".direction-arrow-partners.left"
+		);
+		let slideButtonsPartnersSlider = document.querySelectorAll(
+			".slide-button-partners"
+		);
+		let allSlideTextsPartnersSlider = document.querySelectorAll(
+			".slide-text-partners"
+		);
+		initMouseEvents();
+		const addActiveIndex = () => {
+			slideButtonsPartnersSlider[activeSlideIndexPartnersSlider].classList.add(
+				"active"
+			);
+			slidesPartnersSlider[activeSlideIndexPartnersSlider].classList.add("active");
+			allSlideTextsPartnersSlider[activeSlideIndexPartnersSlider].classList.add(
+				"active"
+			);
+		};
+		const removeActiveIndex = () => {
+			slideButtonsPartnersSlider[activeSlideIndexPartnersSlider].classList.remove(
+				"active"
+			);
+			slidesPartnersSlider[activeSlideIndexPartnersSlider].classList.remove(
+				"active"
+			);
+			allSlideTextsPartnersSlider[activeSlideIndexPartnersSlider].classList.remove(
+				"active"
+			);
+		};
+		addActiveIndex();
+		function initMouseEvents() {
+			const rightArrowClickHandler = () => {
+				if (
+					currentStatePartnersSlider <
+					slidesPartnersSlider.length - visibleSlidesPartnersSlider
+				) {
+					currentStatePartnersSlider++;
+				}
+				if (activeSlideIndexPartnersSlider < slidesPartnersSlider.length - 1) {
+					removeActiveIndex();
+					activeSlideIndexPartnersSlider++;
+				}
+				addActiveIndex();
+				scrollSlides(currentStatePartnersSlider);
+			};
+			if (window.innerWidth <= 900) {
+				rightArrowPartnersSlider.addEventListener("touchend", rightArrowClickHandler);
+			} else {
+				rightArrowPartnersSlider.addEventListener("click", rightArrowClickHandler);
+			}
+
+			const leftArrowClickHandler = () => {
+				if (currentStatePartnersSlider > 0) {
+					currentStatePartnersSlider--;
+				}
+				if (activeSlideIndexPartnersSlider > 0) {
+					removeActiveIndex();
+					activeSlideIndexPartnersSlider--;
+				}
+				addActiveIndex();
+				scrollSlides(currentStatePartnersSlider);
+			};
+
+			if (window.innerWidth <= 900) {
+				leftArrowPartnersSlider.addEventListener("touchend", leftArrowClickHandler);
+			} else {
+				leftArrowPartnersSlider.addEventListener("click", leftArrowClickHandler);
+			}
+		}
+		let translatePartnersSlider;
+		function scrollSlides(currentStatePartnersSlider) {
+			translatePartnersSlider =
+				currentStatePartnersSlider * slideWidthPartnersSlider;
+			if (window.innerWidth > 768) lastIndentPartnersSlider = 0;
+			if (
+				currentStatePartnersSlider ===
+				slidesPartnersSlider.length - visibleSlidesPartnersSlider
+			)
+				translatePartnersSlider =
+					translatePartnersSlider - lastIndentPartnersSlider;
+			sliderPartnersSlider.style.transform = `translateX(-${translatePartnersSlider}px)`;
+		}
+		const onpartnerSliderButton = (index) => {
+			if (index === activeSlideIndexPartnersSlider) return;
+
+			if (index === 0) {
+				currentStatePartnersSlider = 0;
+			} else if (index === slidesPartnersSlider.length - 1) {
+				currentStatePartnersSlider = 2;
+			} else {
+				if (index > activeSlideIndexPartnersSlider) {
+					if (
+						currentStatePartnersSlider <
+						slidesPartnersSlider.length - visibleSlidesPartnersSlider
+					) {
+
+						currentStatePartnersSlider++;
+					}
+				} else if (index < activeSlideIndexPartnersSlider) {
+					if (currentStatePartnersSlider > 0) {
+						currentStatePartnersSlider--;
+					}
+				}
+			}
+			removeActiveIndex();
+			activeSlideIndexPartnersSlider = index;
+			addActiveIndex();
+			scrollSlides(currentStatePartnersSlider);
+		};
+
+		slideButtonsPartnersSlider.forEach((btn, index) => {
+			btn.addEventListener('click', () => {
+				onpartnerSliderButton(index)
+			})
+			btn.addEventListener('touchstart', () => {
+				onpartnerSliderButton(index)
+			})
+		})
+	});
 
 
-    const leftArrowClickHandler = () => {
-        if (currentStatePartnersSlider > 0) {
-            currentStatePartnersSlider--;
-        }
-        if (activeSlideIndexPartnersSlider > 0) {
-            removeActiveIndex();
-            activeSlideIndexPartnersSlider--;
-        }
-        addActiveIndex();
-        scrollSlides(currentStatePartnersSlider);
-    };
-
-    if (window.innerWidth <= 900) {
-        leftArrowPartnersSlider.addEventListener("touchend", leftArrowClickHandler);
-    } else {
-        leftArrowPartnersSlider.addEventListener("click", leftArrowClickHandler);
-    }
-}
-let translatePartnersSlider;
-function scrollSlides(currentStatePartnersSlider) {
-    translatePartnersSlider =
-        currentStatePartnersSlider * slideWidthPartnersSlider;
-    if (window.innerWidth > 768) lastIndentPartnersSlider = 0;
-    if (
-        currentStatePartnersSlider ===
-        slidesPartnersSlider.length - visibleSlidesPartnersSlider
-    )
-        translatePartnersSlider =
-            translatePartnersSlider - lastIndentPartnersSlider;
-    sliderPartnersSlider.style.transform = `translateX(-${translatePartnersSlider}px)`;
-}
-const onpartnerSliderButton = (index) => {
-    if (index === activeSlideIndexPartnersSlider) return;
-
-    if (index === 0) {
-        currentStatePartnersSlider = 0;
-    } else if (index === slidesPartnersSlider.length - 1) {
-        currentStatePartnersSlider = 2;
-    } else {
-        if (index > activeSlideIndexPartnersSlider) {
-            if (
-                currentStatePartnersSlider <
-                slidesPartnersSlider.length - visibleSlidesPartnersSlider
-            ) {
-
-                currentStatePartnersSlider++;
-            }
-        } else if (index < activeSlideIndexPartnersSlider) {
-            if (currentStatePartnersSlider > 0) {
-                currentStatePartnersSlider--;
-            }
-        }
-    }
-    removeActiveIndex();
-    activeSlideIndexPartnersSlider = index;
-    addActiveIndex();
-    scrollSlides(currentStatePartnersSlider);
-};
