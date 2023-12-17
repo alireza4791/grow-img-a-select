@@ -37,7 +37,7 @@ let middleImgTransform = 7;
 let scrollYDiff = 0;
 let baseFontSize = window
     .getComputedStyle(
-        document.querySelector(".services-img .service-header"),
+        document.querySelector(".services-img .services-link__header"),
         null
     )
     .getPropertyValue("font-size");
@@ -53,10 +53,10 @@ document.addEventListener("scroll", () => {
                 if (scrollY < prevScroll) {
                     servicesHomeImgs.forEach((images) => {
                         if (!images.classList.contains('finished')) {
-                            images.querySelector(".service-header").style.transform =
+                            images.querySelector(".services-link__header").style.transform =
                                 "translate(80px, 50%)rotate(-90deg)";
-                            images.querySelector(".service-header").style.opacity = "0";
-                            images.querySelector(".service-content").style.opacity = "0";
+                            images.querySelector(".services-link__header").style.opacity = "0";
+                            images.querySelector(".services-link__content").style.opacity = "0";
                         }
                     })
                 }
@@ -67,7 +67,7 @@ document.addEventListener("scroll", () => {
                     } else {
                         servicesImgProps.width = window.innerWidth > 900 ? (scrollY - scrollYDiff) / 8 : (scrollY - scrollYDiff) / 6;
                         servicesHomeImgs.forEach((img) => {
-                            img.querySelector(".service-header").style.transitionDelay = '0.5s';
+                            img.querySelector(".services-link__header").style.transitionDelay = '0.5s';
                             if (!img.classList.contains("finished")) {
                                 img.style.width = `${Math.max(
                                     Math.min(servicesImgProps.width, 31),
@@ -80,9 +80,9 @@ document.addEventListener("scroll", () => {
                             servicesHomeImgs.forEach((img) => {
                                 if (!img.classList.contains("finished")) {
                                     img.classList.add("finished");
-                                    img.querySelector(".service-header").style.transform =
+                                    img.querySelector(".services-link__header").style.transform =
                                         "translate(0px, 50%)rotate(-90deg)";
-                                    img.querySelector(".service-header").style.opacity = "1";
+                                    img.querySelector(".services-link__header").style.opacity = "1";
                                 }
                             });
                         } else {
@@ -105,93 +105,43 @@ servicesHomeImgs.forEach((img) => {
         if (window.innerWidth > 991) {
             if (img.classList.contains("finished")) {
                 servicesHomeImgs.forEach((images) => {
-                    images.querySelector(".service-header").style.transitionDelay = '0s';
+                    images.querySelector(".services-link__header").style.transitionDelay = '0s';
                     if (images != img) {
                         images.style.width = "12%";
-                        images.querySelector(".service-header").style.fontSize = window.innerWidth <= 478 ? "16px" : "30px";
-                        // images.querySelector(".service-header").style.height = "40%";
-                        images.querySelector(".service-content").style.opacity = "0";
-                        images.querySelector(".service-header").style.transform =
+                        images.querySelector(".services-link__header").style.fontSize = window.innerWidth <= 478 ? "16px" : "30px";
+                        images.querySelector(".services-link__content").style.opacity = "0";
+                        images.querySelector(".services-link__header").style.transform =
                             "translate(0px, 50%)rotate(-90deg)";
-                        images.querySelector(".service-header").style.opacity = "1";
-                        // images.querySelector(".service-header-container").style.right = "45%";
+                        images.querySelector(".services-link__header").style.opacity = "1";
                     } else {
                         images.style.width = "69%";
-                        images.querySelector(".service-header").style.transform =
+                        images.querySelector(".services-link__header").style.transform =
                             "translate(80px, 50%)rotate(-90deg)";
-                        images.querySelector(".service-header").style.opacity = "0";
-                        images.querySelector(".service-content").style.opacity = "1";
-                        // images.querySelector(".service-header-container").style.right = "20%";
-                        // images.querySelector(".service-header").style.height = "90%";
+                        images.querySelector(".services-link__header").style.opacity = "0";
+                        images.querySelector(".services-link__content").style.opacity = "1";
                     }
                 });
             }
         }
     });
-
-    // img.addEventListener("touchmove", () => {
-    // 	if (img.classList.contains("finished")) {
-    // 		servicesHomeImgs.forEach((images) => {
-    // 			images.querySelector(".service-header").style.transitionDelay = '0s';
-    // 			if (images != img) {
-    // 				images.style.width = "12%";
-    // 				images.querySelector(".service-header").style.fontSize = window.innerWidth <= 478 ? "16px" : "30px";
-    // 				// images.querySelector(".service-header").style.height = "40%";
-    // 				images.querySelector(".service-content").style.opacity = "0";
-    // 				images.querySelector(".service-header").style.transform =
-    // 					"translate(0px, 50%)rotate(-90deg)";
-    // 				images.querySelector(".service-header").style.opacity = "1";
-    // 				// images.querySelector(".service-header-container").style.right = "45%";
-    // 			} else {
-    // 				images.style.width = "69%";
-    // 				images.querySelector(".service-header").style.transform =
-    // 					"translate(80px, 50%)rotate(-90deg)";
-    // 				images.querySelector(".service-header").style.opacity = "0";
-    // 				images.querySelector(".service-content").style.opacity = "1";
-    // 				// images.querySelector(".service-header-container").style.right = "20%";
-    // 				// images.querySelector(".service-header").style.height = "90%";
-    // 			}
-    // 		});
-    // 	}
-    // });
 });
 
 servicesHomeContainer.addEventListener("mouseleave", () => {
     if (window.innerWidth > 991) {
         servicesHomeImgs.forEach((img) => {
             if (img.classList.contains("finished")) {
-                img.querySelector(".service-header").style.transitionDelay = '0s';
+                img.querySelector(".services-link__header").style.transitionDelay = '0s';
                 img.style.width = `31%`;
-                img.querySelector(".service-header").style.opacity = "1";
-                img.querySelector(".service-header").style.transform =
+                img.querySelector(".services-link__header").style.opacity = "1";
+                img.querySelector(".services-link__header").style.transform =
                     "translate(0px, 50%)rotate(-90deg)";
-                img.querySelector(".service-content").style.opacity = "0";
-                img.querySelector(".service-header").style.fontSize = baseFontSize;
+                img.querySelector(".services-link__content").style.opacity = "0";
+                img.querySelector(".services-link__header").style.fontSize = baseFontSize;
             }
-            // img.querySelector(".service-header-container").style.right = "20%";
-            // img.querySelector(".service-header").style.height = "90%";
         });
     }
 });
 
-
-// servicesHomeContainer.addEventListener("touchend", () => {
-
-// 	servicesHomeImgs.forEach((img) => {
-// 		if (img.classList.contains("finished")) {
-// 			img.querySelector(".service-header").style.transitionDelay = '0s';
-// 			img.style.width = `31%`;
-// 			img.querySelector(".service-header").style.opacity = "1";
-// 			img.querySelector(".service-header").style.transform =
-// 				"translate(0px, 50%)rotate(-90deg)";
-// 			img.querySelector(".service-content").style.opacity = "0";
-// 			img.querySelector(".service-header").style.fontSize = baseFontSize;
-// 		}
-// 		// img.querySelector(".service-header-container").style.right = "20%";
-// 		// img.querySelector(".service-header").style.height = "90%";
-// 	});
-
-// });
 
 
 
