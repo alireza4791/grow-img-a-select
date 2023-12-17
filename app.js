@@ -28,7 +28,7 @@ function isVisible(ele) {
 
 let middleImg;
 servicesHomeImgs.forEach((img) => {
-    if (img.classList.contains("middle")) {
+    if (img.classList.contains("is--middle")) {
         middleImg = img;
     }
 });
