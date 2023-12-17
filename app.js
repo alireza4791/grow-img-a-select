@@ -328,9 +328,9 @@ window.addEventListener("load", () => {
 
 //partners slider
 
-let sliderPartnersSlider = document.getElementById("slides-partners"),
+let sliderPartnersSlider = document.getElementById("partners-logo-wrap"),
     slidesPartnersSlider =
-        document.querySelectorAll("#partner-slider-item"),
+        document.querySelectorAll("#slide-partners"),
     slideWidthPartnersSlider = slidesPartnersSlider[0].offsetWidth,
     visibleSlidesPartnersSlider =
         Math.floor(window.innerWidth / slideWidthPartnersSlider) - 1,
@@ -338,16 +338,16 @@ let sliderPartnersSlider = document.getElementById("slides-partners"),
     lastIndentPartnersSlider = 20,
     activeSlideIndexPartnersSlider = window.innerWidth <= 768 ? 0 : 2;
 let rightArrowPartnersSlider = document.querySelector(
-    ".direction-arrow-partners.right"
+    ".control-icon.is--right"
 );
 let leftArrowPartnersSlider = document.querySelector(
-    ".direction-arrow-partners.left"
+    ".control-icon.is--left"
 );
 let slideButtonsPartnersSlider = document.querySelectorAll(
-    ".slide-button-partners"
+    ".index-button"
 );
 let allSlideTextsPartnersSlider = document.querySelectorAll(
-    ".slide-text-partners"
+    ".sliders-text"
 );
 initMouseEvents();
 const addActiveIndex = () => {
