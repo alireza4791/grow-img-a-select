@@ -1,9 +1,9 @@
 
-let servicesHomeGrid = document.querySelector(".bordered");
+let servicesHomeGrid = document.querySelector(".is--bordered");
 let serviesHomeBox = document.querySelector(".div-block-4");
 let servicesHomeImgs = document.querySelectorAll(".services-img");
 let servicesHomeContainer = document.querySelector(
-    ".services-img-container-flex"
+    ".is--services-flex"
 );
 
 let prevScroll = 0;
