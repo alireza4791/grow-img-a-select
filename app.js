@@ -149,7 +149,7 @@ let modaBlackBox = document.querySelector(".modal-bg");
 let modalContainer = document.querySelector(".modal-menu-container");
 let menuTxt = document.querySelector(".is--menu-button");
 let modalCloseBtn = document.querySelector(".modal-close");
-let listItems = document.querySelectorAll(".modal-menu-item");
+let listItems = document.querySelectorAll(".modal-menu-item__link");
 let modalBtnContainer = document.querySelector(".modal-buttons-container");
 let modalContainerTimeOut;
 let modalContainerTimeOutList;
