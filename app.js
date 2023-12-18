@@ -149,7 +149,7 @@ let modaBlackBox = document.querySelector(".modal-bg");
 let modalContainer = document.querySelector(".modal-menu-container");
 let menuTxt = document.querySelector(".is--menu-button");
 let modalCloseBtn = document.querySelector(".modal-close");
-let listItems = document.querySelectorAll(".list-2 .list-item");
+let listItems = document.querySelectorAll(".modal-menu-item");
 let modalBtnContainer = document.querySelector(".modal-buttons-container");
 let modalContainerTimeOut;
 let modalContainerTimeOutList;
@@ -181,15 +181,17 @@ const modalStateHandler = (state, isMobile) => {
 
                 modalCloseBtn.style.transform = "translate(0px, 0px)";
                 modalCloseBtn.style.opacity = "1";
-                document.querySelectorAll(".modal-menu-item__link").forEach((link) => {
-                    link.style.opacity = "1";
-                })
+                // document.querySelectorAll(".modal-menu-item__link").forEach((link) => {
+                //     link.style.opacity = "1";
+                // })
+                document.querySelector(".modal-dropdown-icon").style.opacity = "1";
             }, 400);
             break;
         case "close":
-            document.querySelectorAll(".modal-menu-item__link").forEach((link) => {
-                link.style.opacity = "0";
-            })
+            // document.querySelectorAll(".modal-menu-item__link").forEach((link) => {
+            //     link.style.opacity = "0";
+            // })
+            document.querySelector(".modal-dropdown-icon").style.opacity = "0";
             modalContainer.style.width = "0vw";
             modalContainer.style.height = "0vw";
             listItems.forEach((item) => {
