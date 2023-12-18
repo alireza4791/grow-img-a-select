@@ -160,7 +160,6 @@ const modalStateHandler = (state, isMobile) => {
             modalBg.style.display = "flex";
             modalContainerTimeOut = setTimeout(() => {
                 if (isMobile) {
-
                     if (window.innerWidth <= 568) {
                         modalContainer.style.height = window.innerWidth <= 499 ? "520px" : "85vw";
                         modalContainer.style.width = window.innerWidth <= 499 ? "90vw" : "65vw";
@@ -182,11 +181,11 @@ const modalStateHandler = (state, isMobile) => {
 
                 modalCloseBtn.style.transform = "translate(0px, 0px)";
                 modalCloseBtn.style.opacity = "1";
-                document.querySelector(".modal-dropdown-icon").style.opacity = "1";
+                document.querySelector(".modal-menu-item__link").style.opacity = "1";
             }, 400);
             break;
         case "close":
-            document.querySelector(".modal-dropdown-icon").style.opacity = "0";
+            document.querySelector(".modal-menu-item__link").style.opacity = "0";
             modalContainer.style.width = "0vw";
             modalContainer.style.height = "0vw";
             listItems.forEach((item) => {
