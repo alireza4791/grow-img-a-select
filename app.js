@@ -1,4 +1,3 @@
-
 let servicesHomeGrid = document.querySelector(".is--bordered");
 let serviesHomeBox = document.querySelector(".div-block-4");
 let servicesHomeImgs = document.querySelectorAll(".services-img");
