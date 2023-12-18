@@ -181,11 +181,16 @@ const modalStateHandler = (state, isMobile) => {
 
                 modalCloseBtn.style.transform = "translate(0px, 0px)";
                 modalCloseBtn.style.opacity = "1";
-                document.querySelector(".modal-menu-item__link").style.opacity = "1";
+                document.querySelectorAll(".modal-menu-item__link").forEach((link) => {
+                    link.style.opacity = "1";
+                })
             }, 400);
             break;
         case "close":
-            document.querySelector(".modal-menu-item__link").style.opacity = "0";
+            document.querySelectorAll(".modal-menu-item__link").forEach((link) => {
+                link.style.opacity = "0";
+            })
+            modal - menu - item__link
             modalContainer.style.width = "0vw";
             modalContainer.style.height = "0vw";
             listItems.forEach((item) => {
