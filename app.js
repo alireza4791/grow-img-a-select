@@ -239,7 +239,7 @@ if (window.innerWidth <= 768) {
 
 
 window.addEventListener("load", () => {
-    let projectImgTitle = document.querySelector(".best-project-img-title");
+    let projectImgTitle = document.querySelector(".best-project__title");
 
     document.addEventListener("mousemove", function (e) {
         if (bestProjectsTitleIndex != -1) {
@@ -248,7 +248,7 @@ window.addEventListener("load", () => {
         }
     });
 
-    let projectsImages = document.querySelectorAll(".best-project-img");
+    let projectsImages = document.querySelectorAll(".best-projects__img");
     let bestProjectsTitleIndex = -1;
 
     const bestProjectNames = [
