@@ -190,7 +190,6 @@ const modalStateHandler = (state, isMobile) => {
             document.querySelectorAll(".modal-menu-item__link").forEach((link) => {
                 link.style.opacity = "0";
             })
-            modal - menu - item__link
             modalContainer.style.width = "0vw";
             modalContainer.style.height = "0vw";
             listItems.forEach((item) => {
