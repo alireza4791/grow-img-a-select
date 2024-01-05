@@ -392,7 +392,7 @@ const onpartnerSliderButton = (index) => {
     if (index === 0) {
         currentStatePartnersSlider = 0;
     } else if (index === slidesPartnersSlider.length - 1) {
-        currentStatePartnersSlider = ((slidesPartnersSlider.length) / 5) + 2;
+        currentStatePartnersSlider = ((slidesPartnersSlider.length) / 5) + 3;
     } else {
         if (index > activeSlideIndexPartnersSlider) {
             if (
