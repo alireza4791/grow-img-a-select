@@ -156,57 +156,56 @@ let modalContainerTimeOutList;
 
 const modalStateHandler = (state, isMobile) => {
     switch (state) {
-            case "open":
-                modalBg.style.display = "flex";
-                modalContainerTimeOut = setTimeout(() => {
-                    if (isMobile) {
-                        if (window.innerWidth <= 568) {
-                            modalContainer.style.height = window.innerWidth <= 499 ? "520px" : "90vw";
-                            modalContainer.style.width = window.innerWidth <= 499 ? "90vw" : "65vw";
-                        } else {
-                            modalContainer.style.height = "85vw";
-                            modalContainer.style.width = "60vw";
-                        }
+        case "open":
+            modalBg.style.display = "flex";
+            modalContainerTimeOut = setTimeout(() => {
+                if (isMobile) {
+
+                    if (window.innerWidth <= 568) {
+                        modalContainer.style.height = window.innerWidth <= 499 ? "520px" : "85vw";
+                        modalContainer.style.width = window.innerWidth <= 499 ? "90vw" : "65vw";
                     } else {
-                        modalContainer.style.width = "33vw";
-                        modalContainer.style.height = "40vw";
+                        modalContainer.style.height = "70vw";
+                        modalContainer.style.width = "60vw";
                     }
+                } else {
+                    modalContainer.style.width = "33vw";
+                    modalContainer.style.height = "40vw";
+                }
+                listItems.forEach((item) => {
+                    item.style.transform = "translate(0px, 0px)";
+                    item.style.opacity = "1";
+                });
+
+                modalBtnContainer.style.transform = "translate(0px, 0px)";
+                modalBtnContainer.style.opacity = "1";
+
+                modalCloseBtn.style.transform = "translate(0px, 0px)";
+                modalCloseBtn.style.opacity = "1";
+            }, 400);
+            break;
+        case "close":
+            modalContainer.style.width = "0vw";
+            modalContainer.style.height = "0vw";
+            listItems.forEach((item) => {
+                item.style.opacity = "0";
+            });
+            modalBtnContainer.style.opacity = "0";
+            modalCloseBtn.style.opacity = "0";
+            modalContainerTimeOut = setTimeout(() => {
+                modalBg.style.display = "none";
+
+                modalContainerTimeOutList = setTimeout(() => {
                     listItems.forEach((item) => {
-                        item.style.transform = "translate(0px, 0px)";
-                        item.style.opacity = "1";
+                        item.style.transform = "translate(0px, 50px)";
                     });
 
-                    modalBtnContainer.style.transform = "translate(0px, 0px)";
-                    modalBtnContainer.style.opacity = "1";
+                    modalBtnContainer.style.transform = "translate(0px, 50px)";
 
-                    modalCloseBtn.style.transform = "translate(0px, 0px)";
-                    modalCloseBtn.style.opacity = "1";
-                    document.querySelector(".modal-services-icon").style.opacity = "1";
-                }, 400);
-                break;
-            case "close":
-                document.querySelector(".modal-services-icon").style.opacity = "0";
-                modalContainer.style.width = "0vw";
-                modalContainer.style.height = "0vw";
-                listItems.forEach((item) => {
-                    item.style.opacity = "0";
-                });
-                modalBtnContainer.style.opacity = "0";
-                modalCloseBtn.style.opacity = "0";
-                modalContainerTimeOut = setTimeout(() => {
-                    modalBg.style.display = "none";
-
-                    modalContainerTimeOutList = setTimeout(() => {
-                        listItems.forEach((item) => {
-                            item.style.transform = "translate(0px, 50px)";
-                        });
-
-                        modalBtnContainer.style.transform = "translate(0px, 50px)";
-
-                        modalCloseBtn.style.transform = "translate(0px, 50px)";
-                    }, 500);
-                }, 400);
-                break;
+                    modalCloseBtn.style.transform = "translate(0px, 50px)";
+                }, 500);
+            }, 400);
+            break;
         default:
             break;
     }
