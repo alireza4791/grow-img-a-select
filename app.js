@@ -422,4 +422,3 @@ slideButtonsPartnersSlider.forEach((btn, index) => {
         onpartnerSliderButton(index)
     })
 })
-});
