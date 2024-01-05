@@ -396,7 +396,12 @@ const onpartnerSliderButton = (index) => {
             }
         } else if (index < activeSlideIndexPartnersSlider) {
             if (currentStatePartnersSlider > 0) {
-                currentStatePartnersSlider = Math.ceil(index / visibleSlidesPartnersSlider) + 2;
+                if (index <= visibleSlidesPartnersSlider) {
+                    currentStatePartnersSlider = 0;
+                } else {
+                    currentStatePartnersSlider = Math.ceil(index / visibleSlidesPartnersSlider) + 1;
+                }
+
             }
         }
     }
