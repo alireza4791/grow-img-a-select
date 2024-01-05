@@ -393,11 +393,11 @@ const onpartnerSliderButton = (index) => {
                 currentStatePartnersSlider <
                 slidesPartnersSlider.length - visibleSlidesPartnersSlider
             ) {
-                currentStatePartnersSlider += Math.ceil(index / visibleSlidesPartnersSlider) + 2;
+                currentStatePartnersSlider = Math.ceil(index / visibleSlidesPartnersSlider) + 2;
             }
         } else if (index < activeSlideIndexPartnersSlider) {
             if (currentStatePartnersSlider > 0) {
-                currentStatePartnersSlider -= Math.ceil(index / visibleSlidesPartnersSlider) + 2;
+                currentStatePartnersSlider = Math.ceil(index / visibleSlidesPartnersSlider) + 2;
             }
         }
     }
