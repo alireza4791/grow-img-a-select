@@ -1,4 +1,4 @@
-let servicesHomeGrid = document.querySelector(".is--bordered");
+    let servicesHomeGrid = document.querySelector(".is--bordered");
 let serviesHomeBox = document.querySelector(".div-block-4");
 let servicesHomeImgs = document.querySelectorAll(".services-img");
 let servicesHomeContainer = document.querySelector(
@@ -342,7 +342,6 @@ function initMouseEvents() {
                 currentStatePartnersSlider++;
             }
         }
-
         if (activeSlideIndexPartnersSlider < slidesPartnersSlider.length - 1) {
             removeActiveIndex();
             activeSlideIndexPartnersSlider++;
@@ -378,7 +377,7 @@ let translatePartnersSlider;
 function scrollSlides(currentStatePartnersSlider) {
     translatePartnersSlider =
         currentStatePartnersSlider * slideWidthPartnersSlider;
-    if (window.innerWidth > 768) lastIndentPartnersSlider = 0;
+    if (window.innerWidth > 991) lastIndentPartnersSlider = 0;
     if (
         currentStatePartnersSlider ===
         slidesPartnersSlider.length - visibleSlidesPartnersSlider
@@ -423,5 +422,4 @@ slideButtonsPartnersSlider.forEach((btn, index) => {
         onpartnerSliderButton(index)
     })
 })
-
-
+});
