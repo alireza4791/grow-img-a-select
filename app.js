@@ -261,7 +261,7 @@ window.addEventListener("load", () => {
         img.addEventListener("mousemove", () => {
             bestProjectsTitleIndex = index;
             projectImgTitle.style.opacity = "1";
-            projectImgTitle.innerText = img.attr('alt');
+            projectImgTitle.innerText = img.alt;
         });
 
         img.addEventListener("mouseleave", () => {
