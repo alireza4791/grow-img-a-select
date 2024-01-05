@@ -399,12 +399,11 @@ const onpartnerSliderButton = (index) => {
                 currentStatePartnersSlider <
                 slidesPartnersSlider.length - visibleSlidesPartnersSlider
             ) {
-                currentStatePartnersSlider += Math.ceil(index / visibleSlidesPartnersSlider);
-                console.log(Math.ceil(index / visibleSlidesPartnersSlider));
+                currentStatePartnersSlider += Math.ceil(index / visibleSlidesPartnersSlider) + 1;
             }
         } else if (index < activeSlideIndexPartnersSlider) {
             if (currentStatePartnersSlider > 0) {
-                currentStatePartnersSlider--;
+                currentStatePartnersSlider -= Math.ceil(index / visibleSlidesPartnersSlider) + 1;
             }
         }
     }
