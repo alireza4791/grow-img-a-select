@@ -1,4 +1,4 @@
-    let servicesHomeGrid = document.querySelector(".is--bordered");
+let servicesHomeGrid = document.querySelector(".is--bordered");
 let serviesHomeBox = document.querySelector(".div-block-4");
 let servicesHomeImgs = document.querySelectorAll(".services-img");
 let servicesHomeContainer = document.querySelector(
@@ -392,7 +392,7 @@ const onpartnerSliderButton = (index) => {
     if (index === 0) {
         currentStatePartnersSlider = 0;
     } else if (index === slidesPartnersSlider.length - 1) {
-        currentStatePartnersSlider = 2;
+        currentStatePartnersSlider = ((slidesPartnersSlider.length) / 5) + 1;
     } else {
         if (index > activeSlideIndexPartnersSlider) {
             if (
