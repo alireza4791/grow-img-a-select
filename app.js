@@ -400,21 +400,19 @@ const onpartnerSliderButton = (index) => {
 
             }
         } else if (index < activeSlideIndexPartnersSlider) {
-            console.log('test1')
             if (currentStatePartnersSlider > 0) {
-                console.log('test2')
-                if (index <= visibleSlidesPartnersSlider) {
+                if (index - 1 <= visibleSlidesPartnersSlider) {
                     console.log('test3')
                     currentStatePartnersSlider = 0;
                 } else {
                     console.log('test4')
-                    if (visibleSlidesPartnersSlider + 1 === index) {
-                        console.log('test5')
-                        currentStatePartnersSlider = 2;
-                    } else {
-                        console.log('test6')
-                        currentStatePartnersSlider -= Math.ceil(Math.abs(index - activeSlideIndexPartnersSlider) / 3);
-                    }
+                    // if (visibleSlidesPartnersSlider + 1 === index) {
+                    //     console.log('test5')
+                    //     currentStatePartnersSlider = 2;
+                    // } else {
+                    //     console.log('test6')
+                    currentStatePartnersSlider -= Math.ceil(Math.abs(index - activeSlideIndexPartnersSlider) / 3);
+                    // }
                 }
 
             }
