@@ -401,11 +401,9 @@ const onpartnerSliderButton = (index) => {
             }
         } else if (index < activeSlideIndexPartnersSlider) {
             if (currentStatePartnersSlider > 0) {
-                if (index - 1 <= visibleSlidesPartnersSlider) {
-                    console.log('test3')
+                if (index - 1 <= visibleSlidesPartnersSlider - 1) {
                     currentStatePartnersSlider = 0;
                 } else {
-                    console.log('test4')
                     // if (visibleSlidesPartnersSlider + 1 === index) {
                     //     console.log('test5')
                     //     currentStatePartnersSlider = 2;
