@@ -274,7 +274,6 @@ window.addEventListener("load", () => {
 
 
 //partners slider
-
 let sliderPartnersSlider = document.getElementById("partners-logo-wrap"),
     slidesPartnersSlider =
         document.querySelectorAll("#partner-slider-item"),
@@ -401,18 +400,7 @@ const onpartnerSliderButton = (index) => {
             }
         } else if (index < activeSlideIndexPartnersSlider) {
             if (currentStatePartnersSlider > 0) {
-                // if (index - 1 <= visibleSlidesPartnersSlider - 1) {
-                //     currentStatePartnersSlider = 0;
-                // } else {
-                    // if (visibleSlidesPartnersSlider + 1 === index) {
-                    //     console.log('test5')
-                    //     currentStatePartnersSlider = 2;
-                    // } else {
-                    //     console.log('test6')
-                    currentStatePartnersSlider -= Math.ceil(Math.abs(index - activeSlideIndexPartnersSlider) / 3);
-                    // }
-                // }
-
+                currentStatePartnersSlider -= Math.ceil(Math.abs(index - activeSlideIndexPartnersSlider) / 3);
             }
         }
     }
