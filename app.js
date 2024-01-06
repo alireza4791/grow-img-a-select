@@ -392,7 +392,9 @@ const onpartnerSliderButton = (index) => {
                 currentStatePartnersSlider <
                 slidesPartnersSlider.length - visibleSlidesPartnersSlider
             ) {
-                if (visibleSlidesPartnersSlider === index + 1) {
+                console.log(visibleSlidesPartnersSlider)
+                console.log(index, 'index')
+                if (visibleSlidesPartnersSlider === index) {
                     currentStatePartnersSlider = 1;
                 } else {
                     currentStatePartnersSlider = Math.ceil(index / Math.floor(visibleSlidesPartnersSlider / 2));
