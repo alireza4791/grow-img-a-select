@@ -407,8 +407,8 @@ const onpartnerSliderButton = (index) => {
                     if (visibleSlidesPartnersSlider + 1 === index) {
                         currentStatePartnersSlider = 1;
                     } else {
-                        console.log(Math.floor(index / Math.floor(visibleSlidesPartnersSlider / 2)))
-                        currentStatePartnersSlider = Math.floor(index / Math.floor(visibleSlidesPartnersSlider / 2));
+                        console.log(Math.ceil(index / Math.floor(visibleSlidesPartnersSlider / 2)))
+                        currentStatePartnersSlider = Math.ceil(index / Math.floor(visibleSlidesPartnersSlider / 2));
                     }
                 }
 
