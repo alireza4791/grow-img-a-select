@@ -408,7 +408,7 @@ const onpartnerSliderButton = (index) => {
                         currentStatePartnersSlider = 1;
                     } else {
                         console.log(Math.abs(index - activeSlideIndexPartnersSlider) / 3)
-                        currentStatePartnersSlider = Math.abs(index - activeSlideIndexPartnersSlider) / 3;
+                        currentStatePartnersSlider = Math.ceil(Math.abs(index - activeSlideIndexPartnersSlider) / 3);
                     }
                 }
 
