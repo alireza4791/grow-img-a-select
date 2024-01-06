@@ -385,14 +385,19 @@ const onpartnerSliderButton = (index) => {
     if (index === 0) {
         currentStatePartnersSlider = 0;
     } else if (index === slidesPartnersSlider.length - 1) {
-        currentStatePartnersSlider = ((slidesPartnersSlider.length) / visibleSlidesPartnersSlider) + 3;
+        currentStatePartnersSlider = ((slidesPartnersSlider.length) / Math.floor(visibleSlidesPartnersSlider / 2));
     } else {
         if (index > activeSlideIndexPartnersSlider) {
             if (
                 currentStatePartnersSlider <
                 slidesPartnersSlider.length - visibleSlidesPartnersSlider
             ) {
-                currentStatePartnersSlider = Math.ceil(index / Math.floor(visibleSlidesPartnersSlider / 2));
+                if (visibleSlidesPartnersSlider === index + 1) {
+                    currentStatePartnersSlider = 1;
+                } else {
+                    currentStatePartnersSlider = Math.ceil(index / Math.floor(visibleSlidesPartnersSlider / 2));
+                }
+
             }
         } else if (index < activeSlideIndexPartnersSlider) {
             if (currentStatePartnersSlider > 0) {
