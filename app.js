@@ -401,9 +401,9 @@ const onpartnerSliderButton = (index) => {
             }
         } else if (index < activeSlideIndexPartnersSlider) {
             if (currentStatePartnersSlider > 0) {
-                if (index - 1 <= visibleSlidesPartnersSlider - 1) {
-                    currentStatePartnersSlider = 0;
-                } else {
+                // if (index - 1 <= visibleSlidesPartnersSlider - 1) {
+                //     currentStatePartnersSlider = 0;
+                // } else {
                     // if (visibleSlidesPartnersSlider + 1 === index) {
                     //     console.log('test5')
                     //     currentStatePartnersSlider = 2;
@@ -411,7 +411,7 @@ const onpartnerSliderButton = (index) => {
                     //     console.log('test6')
                     currentStatePartnersSlider -= Math.ceil(Math.abs(index - activeSlideIndexPartnersSlider) / 3);
                     // }
-                }
+                // }
 
             }
         }
