@@ -276,7 +276,7 @@ window.addEventListener("load", () => {
 //partners slider
 let sliderPartnersSlider = document.getElementById("partners-logo-wrap"),
     slidesPartnersSlider =
-        document.querySelectorAll("#partner-slider-item"),
+        document.querySelectorAll(".slide-logo-wrap"),
     slideWidthPartnersSlider = slidesPartnersSlider[0].offsetWidth,
     visibleSlidesPartnersSlider =
         Math.floor(window.innerWidth / slideWidthPartnersSlider) - 1,
