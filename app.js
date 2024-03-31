@@ -282,12 +282,17 @@ let sliderPartnersSlider = document.getElementById("partners-logo-wrap"),
         Math.floor(window.innerWidth / slideWidthPartnersSlider) - 1,
     currentStatePartnersSlider = 0,
     lastIndentPartnersSlider = 20,
-    partnerDivider = window.innerWidth <= 768 ? 2 : 3,
-    reminderDivider = window.innerWidth <= 768 ? 1 : 2,
-    prevSlideCount = 0,
-    activeSlideIndexPartnersSlider = 2;
-
-activeSlideIndexPartnersSlider = window.innerWidth <= 768 ? 0 : 2;
+    partnerDivider = window.innerWidth <= 768 ? 2 : 3
+reminderDivider = window.innerWidth <= 768 ? 1 : 2;
+let prevSlideCount = 0;
+let activeSlideIndexPartnersSlider = 2;
+if (window.innerWidth <= 991) {
+    if (window.innerWidth <= 568) {
+        activeSlideIndexPartnersSlider = 0;
+    } else {
+        activeSlideIndexPartnersSlider = 1;
+    }
+}
 let rightArrowPartnersSlider = document.querySelector(
     ".control-icon.is--right"
 );
@@ -300,6 +305,8 @@ let slideButtonsPartnersSlider = document.querySelectorAll(
 let allSlideTextsPartnersSlider = document.querySelectorAll(
     ".sliders-text"
 );
+
+
 initMouseEvents();
 const addActiveIndex = () => {
     slideButtonsPartnersSlider[activeSlideIndexPartnersSlider].classList.add(
@@ -336,7 +343,6 @@ function initMouseEvents() {
                     currentStatePartnersSlider++;
                 }
             }
-
             removeActiveIndex();
             activeSlideIndexPartnersSlider++;
             addActiveIndex();
@@ -362,14 +368,13 @@ function initMouseEvents() {
                     currentStatePartnersSlider--;
                 }
             }
-
             removeActiveIndex();
             activeSlideIndexPartnersSlider--;
             addActiveIndex();
             scrollSlides(currentStatePartnersSlider);
         }
-
     };
+
     if (window.innerWidth <= 900) {
         leftArrowPartnersSlider.addEventListener("touchend", leftArrowClickHandler);
     } else {
@@ -406,6 +411,7 @@ function scrollSlides(currentStatePartnersSlider) {
 slideButtonsPartnersSlider.forEach((btn, index) => {
     btn.addEventListener('click', () => {
         if (index === activeSlideIndexPartnersSlider) return;
+
         if (index === 0) {
             currentStatePartnersSlider = 0;
         } else if (index === slidesPartnersSlider.length - 1) {
