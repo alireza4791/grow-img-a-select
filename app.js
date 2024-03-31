@@ -282,7 +282,12 @@ let sliderPartnersSlider = document.getElementById("partners-logo-wrap"),
         Math.floor(window.innerWidth / slideWidthPartnersSlider) - 1,
     currentStatePartnersSlider = 0,
     lastIndentPartnersSlider = 20,
-    activeSlideIndexPartnersSlider = window.innerWidth <= 768 ? 0 : 2;
+    partnerDivider = window.innerWidth <= 768 ? 2 : 3,
+    reminderDivider = window.innerWidth <= 768 ? 1 : 2,
+    prevSlideCount = 0,
+    activeSlideIndexPartnersSlider = 2;
+
+activeSlideIndexPartnersSlider = window.innerWidth <= 768 ? 0 : 2;
 let rightArrowPartnersSlider = document.querySelector(
     ".control-icon.is--right"
 );
